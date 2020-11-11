@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>addServices</class>
+ <widget class="QMainWindow" name="addServices">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>500</width>
+    <height>700</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>500</width>
+    <height>700</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>-487</y>
+         <width>455</width>
+         <height>1112</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="labelService">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Выбор предоставляемой услуги</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="comboBoxProvideServices">
+          <item>
+           <property name="text">
+            <string>Уточнение </string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Учёт </string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Технический план</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Перераспределение</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Раздел</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelCity">
+          <property name="text">
+           <string>Населенный пункт</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="comboBoxCity">
+          <item>
+           <property name="text">
+            <string>Савинский</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Плесецк</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>19 кв.</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Березка</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>88 кв.</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Кривозерка</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Савинское</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Федово</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Конево</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelAddress">
+          <property name="text">
+           <string>Адрес</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEditAddress"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelSurname">
+          <property name="text">
+           <string>Фамилия</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEditSurname"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelName">
+          <property name="text">
+           <string>Имя</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEditName"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelMiddleName">
+          <property name="text">
+           <string>Отчество</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEditMiddleName"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelTelefone">
+          <property name="text">
+           <string>Номер телефона</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEditTelefone"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelSnils">
+          <property name="text">
+           <string>СНИЛС</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEditSnils"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelPassport">
+          <property name="text">
+           <string>Паспорт</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="textEditPassport"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelDate">
+          <property name="text">
+           <string>Дата записи</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QDateEdit" name="dateEditDate"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelPrice">
+          <property name="text">
+           <string>Стоимость</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEditPrice"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelInfo">
+          <property name="text">
+           <string>Доп. Информация</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="textEditInfo"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelStatus">
+          <property name="text">
+           <string>Статус</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="comboBoxStatus">
+          <item>
+           <property name="text">
+            <string>Срочно</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>В ожидании</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Обычно</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelWork">
+          <property name="text">
+           <string>Съёмка</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="comboBoxWork">
+          <item>
+           <property name="text">
+            <string>Ожидает выезд</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>В обработке</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Готова</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelDataWork">
+          <property name="text">
+           <string>Дата съёмки</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QDateEdit" name="dateEditDataWork"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>Добавить</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButtonOpenFolder">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>Открыть папку</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>500</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
