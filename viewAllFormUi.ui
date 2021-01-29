@@ -7,14 +7,23 @@
     <x>0</x>
     <y>0</y>
     <width>1319</width>
-    <height>553</height>
+    <height>556</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Kartika</family>
+    <pointsize>10</pointsize>
+    <weight>75</weight>
+    <bold>true</bold>
+   </font>
   </property>
   <property name="windowTitle">
    <string>База данных</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget
+   <string notr="true">/*-----QWidget-----*/
+QWidget
 {
 	background-color: #a3a3a3;
 	color: #fff;
@@ -22,16 +31,63 @@
 	selection-color: #000;
 
 }
+
+
+/*-----QLabel-----*/
+QLabel
+{
+	background-color: transparent;
+	color: #fff;
+
+}
+
+
+/*-----QToolButton-----*/
+QToolButton 
+{
+	background-color: transparent;
+	color: #fff;
+	padding: 3px;
+	margin-left: 1px;
+}
+
+
+QToolButton:hover
+{
+	background-color: rgba(70,162,218,50%);
+	border: 1px solid #46a2da;
+	color: #000;
+	
+}
+
+
+QToolButton:pressed
+{
+	background-color: #727272;
+	border: 1px solid #46a2da;
+
+}
+
+
+QToolButton:checked
+{
+	background-color: #727272;
+	border: 1px solid #222;
+}
+
+
 /*-----QPushButton-----*/
 QPushButton
 {
-	background-color: #b7bfc9;
+	background-color: #bdbdbd;
 	color: #fff;
 	min-width: 80px;
 	border-radius: 4px;
 	padding: 5px;
 
 }
+
+
 QPushButton::flat
 {
 	background-color: transparent;
@@ -39,6 +95,8 @@ QPushButton::flat
 	color: #000;
 
 }
+
+
 QPushButton::disabled
 {
 	background-color: #606060;
@@ -46,70 +104,129 @@ QPushButton::disabled
 	border-color: #051a39;
 
 }
+
+
 QPushButton::hover
 {
-	background-color: #54aad;
-	border: 1px solid #7b8a9c;
+	background-color: #707070;
+	border: 1px solid #fff;
 
 }
+
+
 QPushButton::pressed
 {
-	background-color: #627082;
-	border: 1px solid #627082;
+	background-color: #bdbdbd;
+	border: 1px solid #fff;
 
 }
+
+
 QPushButton::checked
 {
-	background-color: #7b8a9c;
-	border: 1px solid #bd5355;
+	background-color: #707070;
+	border: 1px solid #fff;
 
 }
+
+
 /*-----QLineEdit-----*/
 QLineEdit
 {
-	background-color: #bdbdbd;
+	background-color: #lightgray;
 	color : #fff;
-	border: 1px solid #b7bfc9;
+	border: 1px solid #f0f0f0;
 	padding: 3px;
 	padding-left: 5px;
 	border-radius: 4px;
 
 }
+
+
 /*-----QPlainTExtEdit-----*/
 QPlainTextEdit
 {
-	background-color: #bdbdbd;
+	background-color: #575757;
 	color : #fff;
-	border: 1px solid #b7bfc9;
+	border: 1px solid #f0f0f0;
 	padding: 3px;
 	padding-left: 5px;
 	border-radius: 4px;
 
 }
+QTextEdit
+{
+	background-color: #lightgray;
+	border-radius: 4px;
+	border: 1px solid #f0f0f0;
+}
+
+/*-----QToolBox-----*/
+QToolBox
+{
+	background-color: transparent;
+	border: 1px solid #f0f0f0;
+
+}
+
+
+QToolBox::tab
+{
+	background-color: #002b2b;
+	border: 1px solid #f0f0f0;
+
+}
+
+
+QToolBox::tab:hover
+{
+	background-color: #006d6d;
+	border: 1px solid #f0f0f0;
+
+}
+
 
 /*-----QComboBox-----*/
 QComboBox
 {
-    background-color: #4a5157;
+    background-color: #lightgray;
     padding-left: 6px;
     color: #fff;
     height: 20px;
 	border-radius: 4px;
+	border: 1px solid #f0f0f0;
 
 }
+
+QComboBox::drop-down 
+{
+    border: 0px; /* This seems to replace the whole arrow of the combo box */
+	background-color: #lightgray;
+}
+
+/* Define a new custom arrow icon for the combo box */
+QComboBox::down-arrow {
+	background-color: #lightgray;
+    width: 14px;
+    height: 14px;
+}
+
 QComboBox::disabled
 {
-	background-color: #404040;
+	background-color: #575757;
 	color: #656565;
 	border-color: #051a39;
 
 }
+
+
 QComboBox:on
 {
     background-color: #4a5157;
 	color: #fff;
 
 }
+
 
 QComboBox QAbstractItemView
 {
@@ -120,6 +237,8 @@ QComboBox QAbstractItemView
     outline: 0;
 
 }
+
+
 QComboBox::drop-down
 {
 	background-color: #4a5157;
@@ -129,56 +248,82 @@ QComboBox::drop-down
     width: 15px;
 
 }
-QComboBox::down-arrow
-{
-    image: url(://arrow-down.png);
-    width: 8px;
-    height: 8px;
 
+
+
+QDateEdit
+{
+		background-color: #lightgray;
+		border: 1px solid #f0f0f0;
+		border-radius: 4px;
 }
+
+
 
 /*-----QHeaderView-----*/
 QHeaderView::section
 {
-    background-color: #b7bfc9;
+    background-color: #4a5157;
 	border: none;
     color: #fff;
 	padding: 4px;
 	
 }
+
+
 QHeaderView::section:disabled
 {
     background-color: #525251;
     color: #656565;
 
 }
+
+
 QHeaderView::section:checked
 {
     background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(227, 227, 227, 255),stop:1 rgba(187, 187, 187, 255));
     color: #000;
 
 }
+
+
 QHeaderView::section::vertical::first,
 QHeaderView::section::vertical::only-one
 {
     border-left: 1px solid #003333;
 
 }
+
+
 QHeaderView::section::vertical
 {
     border-left: 1px solid #003333;
 }
+
+
 QHeaderView::section::horizontal::first,
 QHeaderView::section::horizontal::only-one
 {
     border-left: 1px solid #003333;
 
 }
+
+
 QHeaderView::section::horizontal
 {
     border-left: 1px solid #003333;
 
 }
+
+
+QTableCornerButton::section
+{
+    background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(227, 227, 227, 255),stop:1 rgba(187, 187, 187, 255));
+	border: 1px solid #000;
+    color: #fff;
+
+}
+
 
 /*-----QCalendarWidget-----*/
 QCalendarWidget QToolButton
@@ -188,6 +333,7 @@ QCalendarWidget QToolButton
 
 }
 
+
 QCalendarWidget QToolButton::hover
 {
 	background-color: #006666;
@@ -196,6 +342,7 @@ QCalendarWidget QToolButton::hover
 
 }
 
+
 QCalendarWidget QMenu 
 {
 	width: 120px;
@@ -203,6 +350,7 @@ QCalendarWidget QMenu
 	color: white;
 
 }
+
 
 QCalendarWidget QWidget 
 { 
@@ -215,8 +363,8 @@ QCalendarWidget QWidget
 QCalendarWidget QAbstractItemView:enabled 
 {
 	color: #fff;  
-	background-color: #242424;  
-	selection-background-color: #002b2b; 
+	background-color: #a0a0a3;  
+	selection-background-color: #d4d4d4; 
 	selection-color: #fff; 
 
 }
@@ -285,7 +433,7 @@ QListView
     color: #fff;
     show-decoration-selected: 1; 
     outline: 0;
-   	border: 1px solid #1d1d1d;
+   	border: 1px solid #f0f0f0;
 
 }
 
@@ -620,45 +768,6 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
 	
 }
 
-
-/*-----QProgressBar-----*/
-QProgressBar
-{
-	border: 1px solid #1d1d1d;
-    text-align: center;
-	border-radius: 10px;
-	color: #fff;
-	font-weight: bold;
-
-}
-
-
-QProgressBar::chunk
-{
-    background-color: #3b86ae;
-	border-radius: 9px;
-    margin: 0.5px;
-
-}
-
-
-/*-----QStatusBar-----*/
-QStatusBar
-{
-	background-color: #4a5157;
-	color: #ffffff;
-	border-color: #051a39;
-
-}
-
-
-/*-----QSizeGrip-----*/
-QSizeGrip 
-{
-	background-color: image(&quot;./ressources/sizegrip.png&quot;); /*To replace*/
-	border: none;
-
-}
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -674,9 +783,240 @@ QSizeGrip
         <height>300</height>
        </size>
       </property>
+      <property name="palette">
+       <palette>
+        <active>
+         <colorrole role="WindowText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>163</red>
+            <green>163</green>
+            <blue>163</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Text">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="ButtonText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>163</red>
+            <green>163</green>
+            <blue>163</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>163</red>
+            <green>163</green>
+            <blue>163</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="HighlightedText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="WindowText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>163</red>
+            <green>163</green>
+            <blue>163</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Text">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="ButtonText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>163</red>
+            <green>163</green>
+            <blue>163</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>163</red>
+            <green>163</green>
+            <blue>163</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="HighlightedText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="WindowText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>163</red>
+            <green>163</green>
+            <blue>163</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Text">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="ButtonText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>163</red>
+            <green>163</green>
+            <blue>163</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>163</red>
+            <green>163</green>
+            <blue>163</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="HighlightedText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
       <property name="font">
        <font>
+        <family>Kartika</family>
         <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <underline>false</underline>
+        <strikeout>false</strikeout>
        </font>
       </property>
       <attribute name="horizontalHeaderDefaultSectionSize">
@@ -787,7 +1127,10 @@ QSizeGrip
       </property>
       <property name="font">
        <font>
+        <family>Kartika</family>
         <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
@@ -817,7 +1160,10 @@ QSizeGrip
       </property>
       <property name="font">
        <font>
+        <family>Kartika</family>
         <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
      </widget>
@@ -857,9 +1203,9 @@ QSizeGrip
          <colorrole role="Button">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>183</red>
-            <green>191</green>
-            <blue>201</blue>
+            <red>189</red>
+            <green>189</green>
+            <blue>189</blue>
            </color>
           </brush>
          </colorrole>
@@ -884,18 +1230,18 @@ QSizeGrip
          <colorrole role="Base">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>183</red>
-            <green>191</green>
-            <blue>201</blue>
+            <red>189</red>
+            <green>189</green>
+            <blue>189</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>183</red>
-            <green>191</green>
-            <blue>201</blue>
+            <red>189</red>
+            <green>189</green>
+            <blue>189</blue>
            </color>
           </brush>
          </colorrole>
@@ -931,9 +1277,9 @@ QSizeGrip
          <colorrole role="Button">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>183</red>
-            <green>191</green>
-            <blue>201</blue>
+            <red>189</red>
+            <green>189</green>
+            <blue>189</blue>
            </color>
           </brush>
          </colorrole>
@@ -958,18 +1304,18 @@ QSizeGrip
          <colorrole role="Base">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>183</red>
-            <green>191</green>
-            <blue>201</blue>
+            <red>189</red>
+            <green>189</green>
+            <blue>189</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>183</red>
-            <green>191</green>
-            <blue>201</blue>
+            <red>189</red>
+            <green>189</green>
+            <blue>189</blue>
            </color>
           </brush>
          </colorrole>
@@ -1070,7 +1416,10 @@ QSizeGrip
       </property>
       <property name="font">
        <font>
+        <family>Kartika</family>
         <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
@@ -1100,7 +1449,10 @@ QSizeGrip
       </property>
       <property name="font">
        <font>
+        <family>Kartika</family>
         <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
@@ -1110,6 +1462,14 @@ QSizeGrip
     </item>
     <item row="3" column="2" rowspan="4">
      <widget class="QCalendarWidget" name="calendarWidget">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="gridVisible">
        <bool>true</bool>
       </property>
@@ -1129,17 +1489,6 @@ QSizeGrip
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1319</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
