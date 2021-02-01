@@ -1,0 +1,1503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>viewAllFormUi</class>
+ <widget class="QMainWindow" name="viewAllFormUi">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1319</width>
+    <height>556</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Kartika</family>
+    <pointsize>10</pointsize>
+    <weight>75</weight>
+    <bold>true</bold>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>База данных</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/*-----QWidget-----*/
+QWidget
+{
+	background-color: #a3a3a3;
+	color: #fff;
+	selection-background-color: #fff;
+	selection-color: #000;
+
+}
+
+
+/*-----QLabel-----*/
+QLabel
+{
+	background-color: transparent;
+	color: #fff;
+
+}
+
+
+/*-----QToolButton-----*/
+QToolButton 
+{
+	background-color: transparent;
+	color: #fff;
+	padding: 3px;
+	margin-left: 1px;
+}
+
+
+QToolButton:hover
+{
+	background-color: rgba(70,162,218,50%);
+	border: 1px solid #46a2da;
+	color: #000;
+	
+}
+
+
+QToolButton:pressed
+{
+	background-color: #727272;
+	border: 1px solid #46a2da;
+
+}
+
+
+QToolButton:checked
+{
+	background-color: #727272;
+	border: 1px solid #222;
+}
+
+
+/*-----QPushButton-----*/
+QPushButton
+{
+	background-color: #bdbdbd;
+	color: #fff;
+	min-width: 80px;
+	border-radius: 4px;
+	padding: 5px;
+
+}
+
+
+QPushButton::flat
+{
+	background-color: transparent;
+	border: none;
+	color: #000;
+
+}
+
+
+QPushButton::disabled
+{
+	background-color: #606060;
+	color: #959595;
+	border-color: #051a39;
+
+}
+
+
+QPushButton::hover
+{
+	background-color: #707070;
+	border: 1px solid #fff;
+
+}
+
+
+QPushButton::pressed
+{
+	background-color: #bdbdbd;
+	border: 1px solid #fff;
+
+}
+
+
+QPushButton::checked
+{
+	background-color: #707070;
+	border: 1px solid #fff;
+
+}
+
+
+/*-----QLineEdit-----*/
+QLineEdit
+{
+	background-color: #lightgray;
+	color : #fff;
+	border: 1px solid #f0f0f0;
+	padding: 3px;
+	padding-left: 5px;
+	border-radius: 4px;
+
+}
+
+
+/*-----QPlainTExtEdit-----*/
+QPlainTextEdit
+{
+	background-color: #575757;
+	color : #fff;
+	border: 1px solid #f0f0f0;
+	padding: 3px;
+	padding-left: 5px;
+	border-radius: 4px;
+
+}
+QTextEdit
+{
+	background-color: #lightgray;
+	border-radius: 4px;
+	border: 1px solid #f0f0f0;
+}
+
+/*-----QToolBox-----*/
+QToolBox
+{
+	background-color: transparent;
+	border: 1px solid #f0f0f0;
+
+}
+
+
+QToolBox::tab
+{
+	background-color: #002b2b;
+	border: 1px solid #f0f0f0;
+
+}
+
+
+QToolBox::tab:hover
+{
+	background-color: #006d6d;
+	border: 1px solid #f0f0f0;
+
+}
+
+
+/*-----QComboBox-----*/
+QComboBox
+{
+    background-color: #lightgray;
+    padding-left: 6px;
+    color: #fff;
+    height: 20px;
+	border-radius: 4px;
+	border: 1px solid #f0f0f0;
+
+}
+
+QComboBox::drop-down 
+{
+    border: 0px; /* This seems to replace the whole arrow of the combo box */
+	background-color: #lightgray;
+}
+
+/* Define a new custom arrow icon for the combo box */
+QComboBox::down-arrow {
+	background-color: #lightgray;
+    width: 14px;
+    height: 14px;
+}
+
+QComboBox::disabled
+{
+	background-color: #575757;
+	color: #656565;
+	border-color: #051a39;
+
+}
+
+
+QComboBox:on
+{
+    background-color: #4a5157;
+	color: #fff;
+
+}
+
+
+QComboBox QAbstractItemView
+{
+    background-color: #4a5157;
+    color: #fff;
+    selection-background-color: #002b2b;
+	selection-color: #fff;
+    outline: 0;
+
+}
+
+
+QComboBox::drop-down
+{
+	background-color: #4a5157;
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+	border-radius: 4px;
+    width: 15px;
+
+}
+
+
+
+QDateEdit
+{
+		background-color: #lightgray;
+		border: 1px solid #f0f0f0;
+		border-radius: 4px;
+}
+
+
+
+/*-----QHeaderView-----*/
+QHeaderView::section
+{
+    background-color: #4a5157;
+	border: none;
+    color: #fff;
+	padding: 4px;
+	
+}
+
+
+QHeaderView::section:disabled
+{
+    background-color: #525251;
+    color: #656565;
+
+}
+
+
+QHeaderView::section:checked
+{
+    background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(227, 227, 227, 255),stop:1 rgba(187, 187, 187, 255));
+    color: #000;
+
+}
+
+
+QHeaderView::section::vertical::first,
+QHeaderView::section::vertical::only-one
+{
+    border-left: 1px solid #003333;
+
+}
+
+
+QHeaderView::section::vertical
+{
+    border-left: 1px solid #003333;
+}
+
+
+QHeaderView::section::horizontal::first,
+QHeaderView::section::horizontal::only-one
+{
+    border-left: 1px solid #003333;
+
+}
+
+
+QHeaderView::section::horizontal
+{
+    border-left: 1px solid #003333;
+
+}
+
+
+QTableCornerButton::section
+{
+    background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(227, 227, 227, 255),stop:1 rgba(187, 187, 187, 255));
+	border: 1px solid #000;
+    color: #fff;
+
+}
+
+
+/*-----QCalendarWidget-----*/
+QCalendarWidget QToolButton
+{
+  	background-color: transparent;
+  	color: white;
+
+}
+
+
+QCalendarWidget QToolButton::hover
+{
+	background-color: #006666;
+	border: 1px solid #006666;
+	color: #fff;
+
+}
+
+
+QCalendarWidget QMenu 
+{
+	width: 120px;
+	left: 20px;
+	color: white;
+
+}
+
+
+QCalendarWidget QWidget 
+{ 
+	alternate-background-color: #4a5157; 
+	color: #fff;
+
+}
+
+
+QCalendarWidget QAbstractItemView:enabled 
+{
+	color: #fff;  
+	background-color: #a0a0a3;  
+	selection-background-color: #d4d4d4; 
+	selection-color: #fff; 
+
+}
+
+
+QCalendarWidget QAbstractItemView:disabled 
+{ 
+	color: #404040; 
+
+}
+
+
+/*-----QTreeWidget-----*/
+QTreeView
+{
+	show-decoration-selected: 0;
+	alternate-background-color: transparent;
+	background-color: transparent;
+   	border: none;
+	color: #fff;
+	font: 8pt;
+
+}
+
+
+QTreeView::item:selected
+{
+	color:#fff;
+	background-color: #002b2b;
+	border-radius: 0px;
+
+}
+
+
+QTreeView::item:!selected:hover
+{
+    background-color: #5e5e5e;
+    border: none;
+    color: white;
+
+}
+
+
+QTreeView::branch:has-children:!has-siblings:closed,
+QTreeView::branch:closed:has-children:has-siblings 
+{
+	image: url(://tree-closed.png);
+
+}
+
+
+QTreeView::branch:open:has-children:!has-siblings,
+QTreeView::branch:open:has-children:has-siblings  
+{
+	image: url(://tree-open.png);
+
+}
+
+
+/*-----QListView-----*/
+QListView 
+{
+	background-color: transparent;
+	alternate-background-color: transparent;
+    border : none;
+    color: #fff;
+    show-decoration-selected: 1; 
+    outline: 0;
+   	border: 1px solid #f0f0f0;
+
+}
+
+
+QListView::disabled 
+{
+	background-color: #656565;
+	color: #1b1b1b;
+    border: 1px solid #656565;
+
+}
+
+
+QListView::item 
+{
+	background-color: transparent;
+    padding: 1px;
+
+}
+
+
+QListView::item:selected 
+{
+	background-color: #002b2b;
+	border: 1px solid #002b2b;
+	color: #fff;
+
+}
+
+
+QListView::item:selected:!active 
+{
+	background-color: #002b2b;
+	border: 1px solid #002b2b;
+	color: #fff;
+
+}
+
+
+QListView::item:selected:active 
+{
+	background-color: #002b2b;
+	border: 1px solid #002b2b;
+	color: #fff;
+
+}
+
+
+QListView::item:hover {
+    background-color: #5e5e5e;
+    border: none;
+    color: #000;
+
+}
+
+
+/*-----QCheckBox-----*/
+QCheckBox
+{
+	background-color: transparent;
+    color: #fff;
+	border: none;
+
+}
+
+
+QCheckBox::indicator
+{
+    background-color: lightgray;
+    border: 1px solid #000;
+    width: 12px;
+    height: 12px;
+
+}
+
+
+QCheckBox::indicator:checked
+{
+    image:url(&quot;./ressources/check.png&quot;);
+	background-color: #002b2b;
+    border: 1px solid #3a546e;
+
+}
+
+
+QCheckBox::indicator:unchecked:hover
+{
+	border: 1px solid #46a2da; 
+
+}
+
+
+QCheckBox::disabled
+{
+	color: #656565;
+
+}
+
+
+QCheckBox::indicator:disabled
+{
+	background-color: #656565;
+	color: #656565;
+    border: 1px solid #656565;
+
+}
+
+
+/*-----QRadioButton-----*/
+QRadioButton 
+{
+	color: #fff;
+	background-color: transparent;
+
+}
+
+
+QRadioButton::indicator::unchecked:hover 
+{
+	background-color: #d3d3d3;
+	border: 2px solid #002b2b;
+	border-radius: 6px;
+}
+
+
+QRadioButton::indicator::checked 
+{
+	border: 2px solid #52beff;
+	border-radius: 6px;
+	background-color: #002b2b;  
+	width: 9px; 
+	height: 9px; 
+
+}
+
+
+/*-----QScrollBar-----*/
+QScrollBar:vertical 
+{
+   border: none;
+   width: 12px;
+
+}
+
+
+QScrollBar::handle:vertical 
+{
+   border: none;
+   border-radius : 0px;
+   background-color: #7a7a7a;
+   min-height: 80px;
+   width : 12px;
+
+}
+
+
+QScrollBar::handle:vertical:pressed
+{
+   background-color: #5d5f60; 
+
+}
+
+
+QScrollBar::add-line:vertical
+{
+   border: none;
+   background: transparent;
+   height: 0px;
+   subcontrol-position: bottom;
+   subcontrol-origin: margin;
+
+}
+
+
+QScrollBar::add-line:vertical:hover 
+{
+   background-color: transparent;
+
+}
+
+
+QScrollBar::add-line:vertical:pressed 
+{
+   background-color: #3f3f3f;
+
+}
+
+
+QScrollBar::sub-line:vertical
+{
+   border: none;
+   background: transparent;
+   height: 0px;
+
+}
+
+
+QScrollBar::sub-line:vertical:hover 
+{
+   background-color: transparent;
+
+}
+
+
+QScrollBar::sub-line:vertical:pressed 
+{
+   background-color: #3f3f3f;
+
+}
+
+
+QScrollBar::up-arrow:vertical
+{
+   width: 0px;
+   height: 0px;
+   background: transparent;
+
+}
+
+
+QScrollBar::down-arrow:vertical 
+{
+   width: 0px;
+   height: 0px;
+   background: transparent;
+
+}
+
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
+{
+   background-color: #222222;
+	
+}
+
+
+QScrollBar:horizontal 
+{
+   border: none;
+   height: 12px;
+
+}
+
+
+QScrollBar::handle:horizontal 
+{
+   border: none;
+   border-radius : 0px;
+   background-color: #7a7a7a;
+   min-height: 80px;
+   height : 12px;
+
+}
+
+
+QScrollBar::handle:horizontal:pressed
+{
+   background-color: #5d5f60; 
+
+}
+
+
+QScrollBar::add-line:horizontal
+{
+   border: none;
+   background: transparent;
+   height: 0px;
+   subcontrol-position: bottom;
+   subcontrol-origin: margin;
+
+}
+
+
+QScrollBar::add-line:horizontal:hover 
+{
+   background-color: transparent;
+
+}
+
+
+QScrollBar::add-line:horizontal:pressed 
+{
+   background-color: #3f3f3f;
+
+}
+
+
+QScrollBar::sub-line:horizontal
+{
+   border: none;
+   background: transparent;
+   height: 0px;
+
+}
+
+
+QScrollBar::sub-line:horizontal:hover 
+{
+   background-color: transparent;
+
+}
+
+
+QScrollBar::sub-line:horizontal:pressed 
+{
+   background-color: #3f3f3f;
+
+}
+
+
+QScrollBar::up-arrow:horizontal
+{
+   width: 0px;
+   height: 0px;
+   background: transparent;
+
+}
+
+
+QScrollBar::down-arrow:horizontal 
+{
+   width: 0px;
+   height: 0px;
+   background: transparent;
+
+}
+
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
+{
+   background-color: #222222;
+	
+}
+
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="9" column="1" rowspan="4" colspan="2">
+     <widget class="QTableWidget" name="tableWidget">
+      <property name="minimumSize">
+       <size>
+        <width>1300</width>
+        <height>300</height>
+       </size>
+      </property>
+      <property name="palette">
+       <palette>
+        <active>
+         <colorrole role="WindowText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>163</red>
+            <green>163</green>
+            <blue>163</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Text">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="ButtonText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>163</red>
+            <green>163</green>
+            <blue>163</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>163</red>
+            <green>163</green>
+            <blue>163</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="HighlightedText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="WindowText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>163</red>
+            <green>163</green>
+            <blue>163</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Text">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="ButtonText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>163</red>
+            <green>163</green>
+            <blue>163</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>163</red>
+            <green>163</green>
+            <blue>163</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="HighlightedText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="WindowText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>163</red>
+            <green>163</green>
+            <blue>163</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Text">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="ButtonText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>163</red>
+            <green>163</green>
+            <blue>163</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>163</red>
+            <green>163</green>
+            <blue>163</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="HighlightedText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <underline>false</underline>
+        <strikeout>false</strikeout>
+       </font>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>130</number>
+      </attribute>
+      <attribute name="horizontalHeaderHighlightSections">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>50</number>
+      </attribute>
+      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderStretchLastSection">
+       <bool>false</bool>
+      </attribute>
+      <row>
+       <property name="text">
+        <string>New Row</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>Статус</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Съёмка</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Населенный пункт</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Адрес</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Фамилия</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Имя</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Отчество</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Номер телефона</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Дата записи</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Услуга</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>id</string>
+       </property>
+      </column>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QPushButton" name="pushButtonDelete">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>90</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>300</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Удалить запись</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="lineEditSearch">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>300</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>300</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QPushButton" name="pushButtonSearch">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>90</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>300</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="palette">
+       <palette>
+        <active>
+         <colorrole role="WindowText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>189</red>
+            <green>189</green>
+            <blue>189</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Text">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="ButtonText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>189</red>
+            <green>189</green>
+            <blue>189</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>189</red>
+            <green>189</green>
+            <blue>189</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="HighlightedText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="WindowText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>189</red>
+            <green>189</green>
+            <blue>189</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Text">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="ButtonText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>189</red>
+            <green>189</green>
+            <blue>189</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>189</red>
+            <green>189</green>
+            <blue>189</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="HighlightedText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="WindowText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>149</red>
+            <green>149</green>
+            <blue>149</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>96</red>
+            <green>96</green>
+            <blue>96</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Text">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>149</red>
+            <green>149</green>
+            <blue>149</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="ButtonText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>149</red>
+            <green>149</green>
+            <blue>149</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>96</red>
+            <green>96</green>
+            <blue>96</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>96</red>
+            <green>96</green>
+            <blue>96</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="HighlightedText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Поиск</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QPushButton" name="pushButtonUpdate">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>90</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>300</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Обновить базу</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2" rowspan="4">
+     <widget class="QCalendarWidget" name="calendarWidget">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="gridVisible">
+       <bool>true</bool>
+      </property>
+      <property name="horizontalHeaderFormat">
+       <enum>QCalendarWidget::ShortDayNames</enum>
+      </property>
+      <property name="verticalHeaderFormat">
+       <enum>QCalendarWidget::NoVerticalHeader</enum>
+      </property>
+      <property name="navigationBarVisible">
+       <bool>true</bool>
+      </property>
+      <property name="dateEditEnabled">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>pushButtonUpdate</tabstop>
+  <tabstop>lineEditSearch</tabstop>
+  <tabstop>pushButtonSearch</tabstop>
+  <tabstop>pushButtonDelete</tabstop>
+  <tabstop>tableWidget</tabstop>
+  <tabstop>calendarWidget</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

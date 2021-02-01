@@ -50,9 +50,7 @@ class startWindow(QtWidgets.QMainWindow, startWindowUi.Ui_startWindow):
                                                  "Выбрать файл базы данных",
                                                  ".",
                                                  "Data Base(*.db);;")
-            pathFolder = QFileDialog.getExistingDirectory(self,
-                                                          "Выбрите директорию")
-
+            pathFolder = QFileDialog.getExistingDirectory(self, "Выбрите директорию")
             config.set(section, optionDb, pathDb[0])
             config.set(section, optionFolder, pathFolder)
             with open('settings.ini', 'w') as config_file:
@@ -395,6 +393,7 @@ class viewAllForm(QtWidgets.QMainWindow, viewAllFormUi.Ui_viewAllFormUi):
                 brush.setColor(color)
                 form.setBackground(brush)
                 self.calendarWidget.setDateTextFormat(date,form)
+
 
 class checkAndUpdate():
     #проверка файлов по размеру(то что имеется, относительно того что есть в репозитории)

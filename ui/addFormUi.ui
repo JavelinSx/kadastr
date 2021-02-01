@@ -1,0 +1,1480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>addFormUi</class>
+ <widget class="QMainWindow" name="addFormUi">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>760</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>600</width>
+    <height>760</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>600</width>
+    <height>760</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>10</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Заполнение данных</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/*-----QWidget-----*/
+QWidget
+{
+	background-color: #a3a3a3;
+	color: #fff;
+	selection-background-color: #fff;
+	selection-color: #000;
+
+}
+
+
+/*-----QLabel-----*/
+QLabel
+{
+	background-color: transparent;
+	color: #fff;
+
+}
+
+
+/*-----QToolButton-----*/
+QToolButton 
+{
+	background-color: transparent;
+	color: #fff;
+	padding: 3px;
+	margin-left: 1px;
+}
+
+
+QToolButton:hover
+{
+	background-color: rgba(70,162,218,50%);
+	border: 1px solid #46a2da;
+	color: #000;
+	
+}
+
+
+QToolButton:pressed
+{
+	background-color: #727272;
+	border: 1px solid #46a2da;
+
+}
+
+
+QToolButton:checked
+{
+	background-color: #727272;
+	border: 1px solid #222;
+}
+
+
+/*-----QPushButton-----*/
+QPushButton
+{
+	background-color: #bdbdbd;
+	color: #fff;
+	min-width: 80px;
+	border-radius: 4px;
+	padding: 5px;
+
+}
+
+
+QPushButton::flat
+{
+	background-color: transparent;
+	border: none;
+	color: #000;
+
+}
+
+
+QPushButton::disabled
+{
+	background-color: #606060;
+	color: #959595;
+	border-color: #051a39;
+
+}
+
+
+QPushButton::hover
+{
+	background-color: #707070;
+	border: 1px solid #fff;
+
+}
+
+
+QPushButton::pressed
+{
+	background-color: #bdbdbd;
+	border: 1px solid #fff;
+
+}
+
+
+QPushButton::checked
+{
+	background-color: #707070;
+	border: 1px solid #fff;
+
+}
+
+
+/*-----QLineEdit-----*/
+QLineEdit
+{
+	background-color: #lightgray;
+	color : #fff;
+	border: 1px solid #f0f0f0;
+	padding: 3px;
+	padding-left: 5px;
+	border-radius: 4px;
+
+}
+
+
+/*-----QPlainTExtEdit-----*/
+QPlainTextEdit
+{
+	background-color: #575757;
+	color : #fff;
+	border: 1px solid #f0f0f0;
+	padding: 3px;
+	padding-left: 5px;
+	border-radius: 4px;
+
+}
+QTextEdit
+{
+	background-color: #lightgray;
+	border-radius: 4px;
+	border: 1px solid #f0f0f0;
+}
+
+/*-----QToolBox-----*/
+QToolBox
+{
+	background-color: transparent;
+	border: 1px solid #f0f0f0;
+
+}
+
+
+QToolBox::tab
+{
+	background-color: #002b2b;
+	border: 1px solid #f0f0f0;
+
+}
+
+
+QToolBox::tab:hover
+{
+	background-color: #006d6d;
+	border: 1px solid #f0f0f0;
+
+}
+
+
+/*-----QComboBox-----*/
+QComboBox
+{
+    background-color: #lightgray;
+    padding-left: 6px;
+    color: #fff;
+    height: 20px;
+	border-radius: 4px;
+	border: 1px solid #f0f0f0;
+
+}
+
+QComboBox::drop-down 
+{
+    border: 0px; /* This seems to replace the whole arrow of the combo box */
+	background-color: #lightgray;
+}
+
+/* Define a new custom arrow icon for the combo box */
+QComboBox::down-arrow {
+	background-color: #lightgray;
+    width: 14px;
+    height: 14px;
+}
+
+QComboBox::disabled
+{
+	background-color: #575757;
+	color: #656565;
+	border-color: #051a39;
+
+}
+
+
+QComboBox:on
+{
+    background-color: #4a5157;
+	color: #fff;
+
+}
+
+
+QComboBox QAbstractItemView
+{
+    background-color: #4a5157;
+    color: #fff;
+    selection-background-color: #002b2b;
+	selection-color: #fff;
+    outline: 0;
+
+}
+
+
+QComboBox::drop-down
+{
+	background-color: #4a5157;
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+	border-radius: 4px;
+    width: 15px;
+
+}
+
+
+
+QDateEdit
+{
+		background-color: #lightgray;
+		border: 1px solid #f0f0f0;
+		border-radius: 4px;
+}
+
+
+
+/*-----QHeaderView-----*/
+QHeaderView::section
+{
+    background-color: #4a5157;
+	border: none;
+    color: #fff;
+	padding: 4px;
+	
+}
+
+
+QHeaderView::section:disabled
+{
+    background-color: #525251;
+    color: #656565;
+
+}
+
+
+QHeaderView::section:checked
+{
+    background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(227, 227, 227, 255),stop:1 rgba(187, 187, 187, 255));
+    color: #000;
+
+}
+
+
+QHeaderView::section::vertical::first,
+QHeaderView::section::vertical::only-one
+{
+    border-left: 1px solid #003333;
+
+}
+
+
+QHeaderView::section::vertical
+{
+    border-left: 1px solid #003333;
+}
+
+
+QHeaderView::section::horizontal::first,
+QHeaderView::section::horizontal::only-one
+{
+    border-left: 1px solid #003333;
+
+}
+
+
+QHeaderView::section::horizontal
+{
+    border-left: 1px solid #003333;
+
+}
+
+
+QTableCornerButton::section
+{
+    background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(227, 227, 227, 255),stop:1 rgba(187, 187, 187, 255));
+	border: 1px solid #000;
+    color: #fff;
+
+}
+
+
+/*-----QCalendarWidget-----*/
+QCalendarWidget QToolButton
+{
+  	background-color: transparent;
+  	color: white;
+
+}
+
+
+QCalendarWidget QToolButton::hover
+{
+	background-color: #006666;
+	border: 1px solid #006666;
+	color: #fff;
+
+}
+
+
+QCalendarWidget QMenu 
+{
+	width: 120px;
+	left: 20px;
+	color: white;
+
+}
+
+
+QCalendarWidget QWidget 
+{ 
+	alternate-background-color: #4a5157; 
+	color: #fff;
+
+}
+
+
+QCalendarWidget QAbstractItemView:enabled 
+{
+	color: #fff;  
+	background-color: #a0a0a3;  
+	selection-background-color: #d4d4d4; 
+	selection-color: #fff; 
+
+}
+
+
+QCalendarWidget QAbstractItemView:disabled 
+{ 
+	color: #404040; 
+
+}
+
+
+/*-----QTreeWidget-----*/
+QTreeView
+{
+	show-decoration-selected: 0;
+	alternate-background-color: transparent;
+	background-color: transparent;
+   	border: none;
+	color: #fff;
+	font: 8pt;
+
+}
+
+
+QTreeView::item:selected
+{
+	color:#fff;
+	background-color: #002b2b;
+	border-radius: 0px;
+
+}
+
+
+QTreeView::item:!selected:hover
+{
+    background-color: #5e5e5e;
+    border: none;
+    color: white;
+
+}
+
+
+QTreeView::branch:has-children:!has-siblings:closed,
+QTreeView::branch:closed:has-children:has-siblings 
+{
+	image: url(://tree-closed.png);
+
+}
+
+
+QTreeView::branch:open:has-children:!has-siblings,
+QTreeView::branch:open:has-children:has-siblings  
+{
+	image: url(://tree-open.png);
+
+}
+
+
+/*-----QListView-----*/
+QListView 
+{
+	background-color: transparent;
+	alternate-background-color: transparent;
+    border : none;
+    color: #fff;
+    show-decoration-selected: 1; 
+    outline: 0;
+   	border: 1px solid #f0f0f0;
+
+}
+
+
+QListView::disabled 
+{
+	background-color: #656565;
+	color: #1b1b1b;
+    border: 1px solid #656565;
+
+}
+
+
+QListView::item 
+{
+	background-color: transparent;
+    padding: 1px;
+
+}
+
+
+QListView::item:selected 
+{
+	background-color: #002b2b;
+	border: 1px solid #002b2b;
+	color: #fff;
+
+}
+
+
+QListView::item:selected:!active 
+{
+	background-color: #002b2b;
+	border: 1px solid #002b2b;
+	color: #fff;
+
+}
+
+
+QListView::item:selected:active 
+{
+	background-color: #002b2b;
+	border: 1px solid #002b2b;
+	color: #fff;
+
+}
+
+
+QListView::item:hover {
+    background-color: #5e5e5e;
+    border: none;
+    color: #000;
+
+}
+
+
+/*-----QCheckBox-----*/
+QCheckBox
+{
+	background-color: transparent;
+    color: #fff;
+	border: none;
+
+}
+
+
+QCheckBox::indicator
+{
+    background-color: lightgray;
+    border: 1px solid #000;
+    width: 12px;
+    height: 12px;
+
+}
+
+
+QCheckBox::indicator:checked
+{
+    image:url(&quot;./ressources/check.png&quot;);
+	background-color: #002b2b;
+    border: 1px solid #3a546e;
+
+}
+
+
+QCheckBox::indicator:unchecked:hover
+{
+	border: 1px solid #46a2da; 
+
+}
+
+
+QCheckBox::disabled
+{
+	color: #656565;
+
+}
+
+
+QCheckBox::indicator:disabled
+{
+	background-color: #656565;
+	color: #656565;
+    border: 1px solid #656565;
+
+}
+
+
+/*-----QRadioButton-----*/
+QRadioButton 
+{
+	color: #fff;
+	background-color: transparent;
+
+}
+
+
+QRadioButton::indicator::unchecked:hover 
+{
+	background-color: #d3d3d3;
+	border: 2px solid #002b2b;
+	border-radius: 6px;
+}
+
+
+QRadioButton::indicator::checked 
+{
+	border: 2px solid #52beff;
+	border-radius: 6px;
+	background-color: #002b2b;  
+	width: 9px; 
+	height: 9px; 
+
+}
+
+
+/*-----QScrollBar-----*/
+QScrollBar:vertical 
+{
+   border: none;
+   width: 12px;
+
+}
+
+
+QScrollBar::handle:vertical 
+{
+   border: none;
+   border-radius : 0px;
+   background-color: #7a7a7a;
+   min-height: 80px;
+   width : 12px;
+
+}
+
+
+QScrollBar::handle:vertical:pressed
+{
+   background-color: #5d5f60; 
+
+}
+
+
+QScrollBar::add-line:vertical
+{
+   border: none;
+   background: transparent;
+   height: 0px;
+   subcontrol-position: bottom;
+   subcontrol-origin: margin;
+
+}
+
+
+QScrollBar::add-line:vertical:hover 
+{
+   background-color: transparent;
+
+}
+
+
+QScrollBar::add-line:vertical:pressed 
+{
+   background-color: #3f3f3f;
+
+}
+
+
+QScrollBar::sub-line:vertical
+{
+   border: none;
+   background: transparent;
+   height: 0px;
+
+}
+
+
+QScrollBar::sub-line:vertical:hover 
+{
+   background-color: transparent;
+
+}
+
+
+QScrollBar::sub-line:vertical:pressed 
+{
+   background-color: #3f3f3f;
+
+}
+
+
+QScrollBar::up-arrow:vertical
+{
+   width: 0px;
+   height: 0px;
+   background: transparent;
+
+}
+
+
+QScrollBar::down-arrow:vertical 
+{
+   width: 0px;
+   height: 0px;
+   background: transparent;
+
+}
+
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
+{
+   background-color: #222222;
+	
+}
+
+
+QScrollBar:horizontal 
+{
+   border: none;
+   height: 12px;
+
+}
+
+
+QScrollBar::handle:horizontal 
+{
+   border: none;
+   border-radius : 0px;
+   background-color: #7a7a7a;
+   min-height: 80px;
+   height : 12px;
+
+}
+
+
+QScrollBar::handle:horizontal:pressed
+{
+   background-color: #5d5f60; 
+
+}
+
+
+QScrollBar::add-line:horizontal
+{
+   border: none;
+   background: transparent;
+   height: 0px;
+   subcontrol-position: bottom;
+   subcontrol-origin: margin;
+
+}
+
+
+QScrollBar::add-line:horizontal:hover 
+{
+   background-color: transparent;
+
+}
+
+
+QScrollBar::add-line:horizontal:pressed 
+{
+   background-color: #3f3f3f;
+
+}
+
+
+QScrollBar::sub-line:horizontal
+{
+   border: none;
+   background: transparent;
+   height: 0px;
+
+}
+
+
+QScrollBar::sub-line:horizontal:hover 
+{
+   background-color: transparent;
+
+}
+
+
+QScrollBar::sub-line:horizontal:pressed 
+{
+   background-color: #3f3f3f;
+
+}
+
+
+QScrollBar::up-arrow:horizontal
+{
+   width: 0px;
+   height: 0px;
+   background: transparent;
+
+}
+
+
+QScrollBar::down-arrow:horizontal 
+{
+   width: 0px;
+   height: 0px;
+   background: transparent;
+
+}
+
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
+{
+   background-color: #222222;
+	
+}
+
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="minimumSize">
+    <size>
+     <width>600</width>
+     <height>750</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="3" column="0">
+     <widget class="QLabel" name="labelService">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>15</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Выбор предоставляемой услуги</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="2">
+     <widget class="QLineEdit" name="lineEditMiddleName">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="labelCity">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>15</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Населенный пункт</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="14" column="2">
+     <widget class="QComboBox" name="comboBoxStatus">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <item>
+       <property name="text">
+        <string>Готова</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Ожидание</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Разработка</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="15" column="0">
+     <widget class="QLabel" name="labelWork">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Съёмка</string>
+      </property>
+     </widget>
+    </item>
+    <item row="15" column="2">
+     <widget class="QComboBox" name="comboBoxWork">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <item>
+       <property name="text">
+        <string>Ожидает выезд</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>В обработке</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Готова</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="9" column="2">
+     <widget class="QLineEdit" name="lineEditName">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="0">
+     <widget class="QLabel" name="labelMiddleName">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Отчество</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="labelAddress">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Адрес</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="0">
+     <widget class="QLabel" name="labelName">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Имя</string>
+      </property>
+     </widget>
+    </item>
+    <item row="50" column="0" colspan="3">
+     <widget class="QPushButton" name="pushButton">
+      <property name="minimumSize">
+       <size>
+        <width>90</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Добавить</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="labelSurname">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Фамилия</string>
+      </property>
+     </widget>
+    </item>
+    <item row="19" column="0">
+     <widget class="QLabel" name="labelSnils">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>СНИЛС</string>
+      </property>
+     </widget>
+    </item>
+    <item row="22" column="2">
+     <widget class="QTextEdit" name="textEditPassport">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>350</width>
+        <height>80</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>355</width>
+        <height>80</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="placeholderText">
+       <string>когда? серия/номер?  кем? </string>
+      </property>
+     </widget>
+    </item>
+    <item row="16" column="2">
+     <widget class="QDateEdit" name="dateEditDataWork">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="calendarPopup">
+       <bool>true</bool>
+      </property>
+      <property name="date">
+       <date>
+        <year>2021</year>
+        <month>1</month>
+        <day>1</day>
+       </date>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="2">
+     <widget class="QLineEdit" name="lineEditSurname">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="2">
+     <widget class="QLineEdit" name="lineEditAddress">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="19" column="2">
+     <widget class="QLineEdit" name="lineEditSnils">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>111-111-111 11</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="2">
+     <widget class="QLineEdit" name="lineEditCity">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2">
+     <widget class="QComboBox" name="comboBoxProvideServices">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <item>
+       <property name="text">
+        <string>Акт обследования</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Выдел</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Вынос</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Многоквартирноые дома</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Образование</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Объединение</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Перераспределение</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Раздел</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Технический план</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Уточнение/Изменение</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="16" column="0">
+     <widget class="QLabel" name="labelDataWork">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Дата съёмки</string>
+      </property>
+     </widget>
+    </item>
+    <item row="11" column="2">
+     <widget class="QLineEdit" name="lineEditTelefone">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="placeholderText">
+       <string>89216734503</string>
+      </property>
+     </widget>
+    </item>
+    <item row="22" column="0">
+     <widget class="QLabel" name="labelPassport">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Паспорт</string>
+      </property>
+     </widget>
+    </item>
+    <item row="11" column="0">
+     <widget class="QLabel" name="labelTelefone">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Номер телефона</string>
+      </property>
+     </widget>
+    </item>
+    <item row="24" column="0">
+     <widget class="QCheckBox" name="checkBoxConsent">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Согласие</string>
+      </property>
+     </widget>
+    </item>
+    <item row="12" column="2">
+     <widget class="QDateEdit" name="dateEditDate">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="calendarPopup">
+       <bool>true</bool>
+      </property>
+      <property name="timeSpec">
+       <enum>Qt::UTC</enum>
+      </property>
+      <property name="date">
+       <date>
+        <year>2021</year>
+        <month>1</month>
+        <day>1</day>
+       </date>
+      </property>
+     </widget>
+    </item>
+    <item row="12" column="0">
+     <widget class="QLabel" name="labelDate">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Дата записи</string>
+      </property>
+     </widget>
+    </item>
+    <item row="17" column="0">
+     <widget class="QLabel" name="labelInfo">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Доп. Информация</string>
+      </property>
+     </widget>
+    </item>
+    <item row="13" column="0">
+     <widget class="QLabel" name="labelPrice">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Стоимость</string>
+      </property>
+     </widget>
+    </item>
+    <item row="13" column="2">
+     <widget class="QLineEdit" name="lineEditPrice">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="placeholderText">
+       <string>8000</string>
+      </property>
+     </widget>
+    </item>
+    <item row="17" column="2">
+     <widget class="QTextEdit" name="textEditInfo">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>350</width>
+        <height>80</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>350</width>
+        <height>80</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="placeholderText">
+       <string>Особые заметки</string>
+      </property>
+     </widget>
+    </item>
+    <item row="14" column="0">
+     <widget class="QLabel" name="labelStatus">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Статус</string>
+      </property>
+     </widget>
+    </item>
+    <item row="25" column="0">
+     <widget class="QCheckBox" name="checkBoxAct">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>АКТ</string>
+      </property>
+     </widget>
+    </item>
+    <item row="23" column="0">
+     <widget class="QCheckBox" name="checkBoxDeclaration">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Декларация</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>comboBoxProvideServices</tabstop>
+  <tabstop>lineEditCity</tabstop>
+  <tabstop>lineEditAddress</tabstop>
+  <tabstop>lineEditSurname</tabstop>
+  <tabstop>lineEditName</tabstop>
+  <tabstop>lineEditMiddleName</tabstop>
+  <tabstop>lineEditTelefone</tabstop>
+  <tabstop>dateEditDate</tabstop>
+  <tabstop>lineEditPrice</tabstop>
+  <tabstop>comboBoxStatus</tabstop>
+  <tabstop>comboBoxWork</tabstop>
+  <tabstop>dateEditDataWork</tabstop>
+  <tabstop>textEditInfo</tabstop>
+  <tabstop>lineEditSnils</tabstop>
+  <tabstop>textEditPassport</tabstop>
+  <tabstop>checkBoxDeclaration</tabstop>
+  <tabstop>checkBoxConsent</tabstop>
+  <tabstop>checkBoxAct</tabstop>
+  <tabstop>pushButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
