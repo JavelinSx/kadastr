@@ -37,7 +37,7 @@ class startWindow(QtWidgets.QMainWindow, startWindowUi.Ui_startWindow):
             optionDb = 'pathDb'
             optionFolder = 'pathFolder'
             config = configparser.ConfigParser()
-            config.read('settings.ini')
+            config.read('data/settings.ini')
             pathDb = config.get(section, optionDb)
             pathFolder = config.get(section, optionFolder)
         except:
@@ -45,7 +45,7 @@ class startWindow(QtWidgets.QMainWindow, startWindowUi.Ui_startWindow):
             optionDb = 'pathDb'
             optionFolder = 'pathFolder'
             config = configparser.ConfigParser()
-            config.read('settings.ini')
+            config.read('data/settings.ini')
             pathDb = QFileDialog.getOpenFileName(self,
                                                  "Выбрать файл базы данных",
                                                  ".",
@@ -53,7 +53,7 @@ class startWindow(QtWidgets.QMainWindow, startWindowUi.Ui_startWindow):
             pathFolder = QFileDialog.getExistingDirectory(self, "Выбрите директорию")
             config.set(section, optionDb, pathDb[0])
             config.set(section, optionFolder, pathFolder)
-            with open('settings.ini', 'w') as config_file:
+            with open('data/settings.ini', 'w') as config_file:
                 config.write(config_file)
         return pathDb, pathFolder
 
