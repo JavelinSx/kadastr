@@ -5,22 +5,22 @@ import sys
 from PyQt5 import QtWidgets, QtGui
 import sqlite3
 
-from PyQt5.QtCore import QDate, QRectF
-from PyQt5.QtGui import QIcon, QPainter, QColor, QBrush, QTextCharFormat
+from PyQt5.QtCore import QDate
+from PyQt5.QtGui import QIcon, QColor, QBrush, QTextCharFormat
 from PyQt5.QtWidgets import QFileDialog, QTableWidgetItem, QMessageBox, QDesktopWidget
 
-import viewAllFormUi
-import startWindowUi
-import addFormUi
-import viewSelectFormUi
+import ui.viewAllFormUi
+import ui.startWindowUi
+import ui.addFormUi
+import ui.viewSelectFormUi
 
 
-class startWindow(QtWidgets.QMainWindow, startWindowUi.Ui_startWindow):
+class startWindow(QtWidgets.QMainWindow, ui.startWindowUi.Ui_startWindowUi):
     def __init__(self, parent=None):
         super(startWindow, self).__init__(parent)
         self.parent = parent
         self.error_dialog = QtWidgets.QErrorMessage()
-        self.setupUiStart(self)
+        self.setupUi(self)
         self.initUi()
         self.pushButtonAdd.clicked.connect(self.openWinAddServices)
         self.pushButtonView.clicked.connect(self.openWinView)
@@ -29,7 +29,7 @@ class startWindow(QtWidgets.QMainWindow, startWindowUi.Ui_startWindow):
         self.cursor = self.conn.cursor()
 
     def initUi(self):
-        self.setWindowIcon(QIcon('main.png'))
+        self.setWindowIcon(QIcon('img/main.png'))
 
     def createConfig(self):
         try:
@@ -68,7 +68,7 @@ class startWindow(QtWidgets.QMainWindow, startWindowUi.Ui_startWindow):
         self.viewAllForm.show()
 
 
-class addForm(QtWidgets.QMainWindow, addFormUi.Ui_addFormUi):
+class addForm(QtWidgets.QMainWindow, ui.addFormUi.Ui_addFormUi):
     def __init__(self, conn, cursor, pathFolder, pathDb, parent=None):
         super(addForm, self).__init__(parent)
         self.parent = parent
@@ -76,17 +76,17 @@ class addForm(QtWidgets.QMainWindow, addFormUi.Ui_addFormUi):
         self.cursor = cursor
         self.pathFolder = pathFolder
         self.pathDb = pathDb
-        self.setupUiAddForm(self)
+        self.setupUi(self)
         self.pushButton.clicked.connect(self.insertInfo)
         self.winStart = None
         self.initUi()
 
     def initUi(self):
-        self.setWindowIcon(QIcon('new.png'))
+        self.setWindowIcon(QIcon('img/new.png'))
 
     def getFolder(self):  # получение полного пути до созданной директории
         provide = self.comboBoxProvideServices.itemText(self.comboBoxProvideServices.currentIndex())
-        city = self.comboBoxCity.itemText(self.comboBoxCity.currentIndex())
+        city = self.lineEditCity.text()
         address = self.lineEditAddress.text()
         fullPathToDir = os.path.join(self.pathFolder, provide, city, address)
         return os.path.abspath(fullPathToDir)
@@ -108,14 +108,14 @@ class addForm(QtWidgets.QMainWindow, addFormUi.Ui_addFormUi):
                                                QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
             if buttonReply == QMessageBox.Yes:
                 mass = [(self.comboBoxProvideServices.itemText(self.comboBoxProvideServices.currentIndex()),
-                         self.comboBoxCity.itemText(self.comboBoxCity.currentIndex()), self.lineEditAddress.text(),
+                         self.lineEditCity.text(), self.lineEditAddress.text(),
                          self.lineEditSurname.text(), self.lineEditName.text(), self.lineEditMiddleName.text(),
-                         self.lineEditTelefone.text(), self.lineEditSnils.text(), self.textEditPassport.toPlainText(),
+                         self.lineEditTelefone.text(),
                          self.dateEditDate.text(), self.lineEditPrice.text(), self.textEditInfo.toPlainText(),
                          self.comboBoxStatus.itemText(self.comboBoxStatus.currentIndex()),
                          self.comboBoxWork.itemText(self.comboBoxWork.currentIndex()),
                          self.dateEditDataWork.text(), os.path.abspath(self.getFolder()))]
-                self.conn.executemany("INSERT INTO statement VALUES (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", mass)
+                self.conn.executemany("INSERT INTO statement VALUES (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", mass)
                 os.makedirs(self.getFolder())  # создание директории по заданному пути
                 self.openFolder()  # открытие созданной директории
                 if self.conn.commit():
@@ -137,11 +137,11 @@ class addForm(QtWidgets.QMainWindow, addFormUi.Ui_addFormUi):
             QMessageBox.critical(self, "Ошибка ", str(text), QMessageBox.Ok)
 
 
-class viewSelectForm(QtWidgets.QMainWindow, viewSelectFormUi.Ui_viewSelectFormUi):
+class viewSelectForm(QtWidgets.QMainWindow, ui.viewSelectFormUi.Ui_viewSelectFormUi):
     def __init__(self, conn, cursor, pathFolder, pathDb, parent=None):
         super(viewSelectForm, self).__init__(parent)
         self.parent = parent
-        self.setupUiSelectForm(self)
+        self.setupUi(self)
         self.conn = conn
         self.cursor = cursor
         self.pathFolder = pathFolder
@@ -149,9 +149,6 @@ class viewSelectForm(QtWidgets.QMainWindow, viewSelectFormUi.Ui_viewSelectFormUi
         self.pushButtonOpenFolder.clicked.connect(self.openFolder)
         self.pushButton.clicked.connect(self.updateInfo)
         self.massUpdate = ()
-        self.comboBoxProvideServices.setEnabled(False)
-        self.lineEditAddress.setEnabled(False)
-        self.comboBoxCity.setEnabled(False)
         qr = self.frameGeometry()
         cp = QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
@@ -159,51 +156,47 @@ class viewSelectForm(QtWidgets.QMainWindow, viewSelectFormUi.Ui_viewSelectFormUi
         self.initUi()
 
     def initUi(self):
-        self.setWindowIcon(QIcon('edit.png'))
+        self.setWindowIcon(QIcon('img/edit.png'))
 
     def fillInfo(self, mass):  # копирование и воод информации о выделенной заявке
         self.massUpdate = mass
-        fullDateD = mass[0][10]
+        fullDateD = mass[0][8]
         dayD = int(fullDateD[0:2])
         mouthD = int(fullDateD[3:5])
         yearD = int(fullDateD[6:10])
 
-        fullDateDD = mass[0][15]
+        fullDateDD = mass[0][13]
         dayDD = int(fullDateDD[0:2])
         mouthDD = int(fullDateDD[3:5])
         yearDD = int(fullDateDD[6:10])
 
-        getIndexServices = self.comboBoxProvideServices.findText(mass[0][1])
-        getIndexCity = self.comboBoxCity.findText(mass[0][2])
-        getIndexStatus = self.comboBoxStatus.findText(mass[0][13])
-        getIndexWork = self.comboBoxWork.findText(mass[0][14])
+
+        getIndexStatus = self.comboBoxStatus.findText(mass[0][11])
+        getIndexWork = self.comboBoxWork.findText(mass[0][12])
 
         date = QDate(yearD, dayD, mouthD)
         dateD = QDate(yearDD, dayDD, mouthDD)
 
-        self.comboBoxProvideServices.setCurrentIndex(getIndexServices)
-        self.comboBoxCity.setCurrentIndex(getIndexCity)
-        self.lineEditAddress.setText(mass[0][3])
+
+
         self.lineEditSurname.setText(mass[0][4])
         self.lineEditName.setText(mass[0][5])
         self.lineEditMiddleName.setText(mass[0][6])
         self.lineEditTelefone.setText(mass[0][7])
-        self.lineEditSnils.setText(mass[0][8])
-        self.textEditPassport.setText(mass[0][9])
         self.dateEditDate.setDate(date)
-        self.lineEditPrice.setText(mass[0][11])
-        self.textEditInfo.setText(mass[0][12])
+        self.lineEditPrice.setText(mass[0][9])
+        self.textEditInfo.setText(mass[0][10])
         self.comboBoxStatus.setCurrentIndex(getIndexStatus)
         self.comboBoxWork.setCurrentIndex(getIndexWork)
         self.dateEditDataWork.setDate(dateD)
-        self.getPathFolder = mass[0][16]
+        self.getPathFolder = mass[0][14]
 
-        return mass
 
     def getFolder(self):  # получение полного пути до созданной директории
-        provide = self.comboBoxProvideServices.itemText(self.comboBoxProvideServices.currentIndex())
-        city = self.comboBoxCity.itemText(self.comboBoxCity.currentIndex())
-        address = self.lineEditAddress.text()
+        provide = self.massUpdate[0][1]
+        city = self.massUpdate[0][2]
+        address = self.massUpdate[0][3]
+        print(provide,city,address)
         provide.strip(' ')
         city.strip(' ')
         address.strip(' ')
@@ -229,8 +222,7 @@ class viewSelectForm(QtWidgets.QMainWindow, viewSelectFormUi.Ui_viewSelectFormUi
         surName = self.lineEditSurname.text()
         middleName = self.lineEditMiddleName.text()
         telefone = self.lineEditTelefone.text()
-        snils = self.lineEditSnils.text()
-        passport = self.textEditPassport.toPlainText()
+
         dataStart = self.dateEditDate.text()
         price = self.lineEditPrice.text()
         info = self.textEditInfo.toPlainText()
@@ -239,9 +231,9 @@ class viewSelectForm(QtWidgets.QMainWindow, viewSelectFormUi.Ui_viewSelectFormUi
         dateWork = self.dateEditDataWork.text()
 
         if buttonReply == QMessageBox.Yes:
-            self.cursor.execute("UPDATE statement SET name=?,surName=?,middleName=?,telefone=?,snils=?,passport=?,"
+            self.cursor.execute("UPDATE statement SET name=?,surName=?,middleName=?,telefone=?,"
                                 "dateStart=?,price=?,info=?,status=?,work=?,dateWork=? WHERE id=?",
-                                (name, surName, middleName, telefone, snils, passport, dataStart, price, info, status,
+                                (name, surName, middleName, telefone, dataStart, price, info, status,
                                  work, dateWork, id,))
             if self.conn.commit():
                 msg = QMessageBox()
@@ -252,7 +244,7 @@ class viewSelectForm(QtWidgets.QMainWindow, viewSelectFormUi.Ui_viewSelectFormUi
                 msg.exec()
 
 
-class viewAllForm(QtWidgets.QMainWindow, viewAllFormUi.Ui_viewAllFormUi):
+class viewAllForm(QtWidgets.QMainWindow, ui.viewAllFormUi.Ui_viewAllFormUi):
     def __init__(self, pathDb, pathFolder, conn, cursor, parent=None):
         super(viewAllForm, self).__init__(parent)
         self.parent = parent
@@ -260,7 +252,7 @@ class viewAllForm(QtWidgets.QMainWindow, viewAllFormUi.Ui_viewAllFormUi):
         self.pathFolder = pathFolder
         self.conn = conn
         self.cursor = cursor
-        self.setupUiAllForm(self)
+        self.setupUi(self)
         self.getAllRecord()
         self.tableWidget.itemDoubleClicked.connect(self.openFullInfo)
         self.pushButtonDelete.clicked.connect(self.deleteRecord)
@@ -277,7 +269,7 @@ class viewAllForm(QtWidgets.QMainWindow, viewAllFormUi.Ui_viewAllFormUi):
         self.fillRecord(records)
 
     def initUi(self):
-        self.setWindowIcon(QIcon('BD.png'))
+        self.setWindowIcon(QIcon('img/BD.png'))
         self.tableWidget.setSortingEnabled(True)
         self.tableWidget.verticalHeader().hide()
 
@@ -311,12 +303,12 @@ class viewAllForm(QtWidgets.QMainWindow, viewAllFormUi.Ui_viewAllFormUi):
         for i in range(len(records)):
             for j in range(6):
                 item = QTableWidgetItem()
-                self.colorItem(item, records[i][13])
-                item.setText(str(records[i][13]))  # статус
+                self.colorItem(item, records[i][11])
+                item.setText(str(records[i][11]))  # статус
                 self.tableWidget.setItem(i, 0, item)
                 item = QTableWidgetItem()
-                self.colorItem(item, records[i][14])
-                item.setText(str(records[i][14]))  # съёмка
+                self.colorItem(item, records[i][12])
+                item.setText(str(records[i][12]))  # съёмка
                 self.tableWidget.setItem(i, 1, item)
                 item = QTableWidgetItem()
                 item.setText(str(records[i][2]))  # нас.пункт
@@ -337,7 +329,7 @@ class viewAllForm(QtWidgets.QMainWindow, viewAllFormUi.Ui_viewAllFormUi):
                 item.setText(str(records[i][7]))  # ном.телефона
                 self.tableWidget.setItem(i, 7, item)
                 item = QTableWidgetItem()
-                item.setText(str(records[i][10]))  # дата записи
+                item.setText(str(records[i][8]))  # дата записи
                 self.tableWidget.setItem(i, 8, item)
                 item = QTableWidgetItem()
                 item.setText(str(records[i][1]))  # услуга
