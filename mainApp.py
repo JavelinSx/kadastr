@@ -2,7 +2,7 @@ import configparser
 import os
 import sys
 
-from PyQt5 import QtWidgets, QtGui
+from PyQt5 import QtWidgets, QtGui, QtCore
 import sqlite3
 
 from PyQt5.QtCore import QDate
@@ -13,11 +13,13 @@ import ui.viewAllFormUi
 import ui.startWindowUi
 import ui.addFormUi
 import ui.viewSelectFormUi
+import ctypes
 
 
 class startWindow(QtWidgets.QMainWindow, ui.startWindowUi.Ui_startWindowUi):
     def __init__(self, parent=None):
         super(startWindow, self).__init__(parent)
+
         self.parent = parent
         self.error_dialog = QtWidgets.QErrorMessage()
         self.setupUi(self)
@@ -284,11 +286,11 @@ class viewAllForm(QtWidgets.QMainWindow, ui.viewAllFormUi.Ui_viewAllFormUi):
             self.getAllRecord()
 
     def colorItem(self, item, text):
-        if text == "Срочно":
+        if text == "Готова":
             item.setBackground(QtGui.QColor(240, 128, 0))
-        if text == "Обычно":
+        if text == "Ожидание":
             item.setBackground(QtGui.QColor(134, 250, 45))
-        if text == "В ожидании":
+        if text == "В разработке":
             item.setBackground(QtGui.QColor(236, 240, 0))
         if text == "Ожидает выезд":
             item.setBackground(QtGui.QColor(240, 128, 0))
@@ -397,8 +399,19 @@ class checkAndUpdate():
 
 
 def main():
+
+
     app = QtWidgets.QApplication(sys.argv)
     window = startWindow()
+    myappid = 'mycompany.myproduct.subproduct.version'  # arbitrary string
+    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+    app_icon = QtGui.QIcon()
+    app_icon.addFile('img/main.ico', QtCore.QSize(16, 16))
+    app_icon.addFile('img/main.ico', QtCore.QSize(24, 24))
+    app_icon.addFile('img/main.ico', QtCore.QSize(32, 32))
+    app_icon.addFile('img/main.ico', QtCore.QSize(48, 48))
+    app_icon.addFile('img/main.ico', QtCore.QSize(256, 256))
+    app.setWindowIcon(app_icon)
     window.show()
     app.exec_()
 
