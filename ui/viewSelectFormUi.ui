@@ -822,7 +822,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
        </font>
       </property>
       <property name="placeholderText">
-       <string>когда? серия/номер?  кем? </string>
+       <string>Когда? Кем? </string>
       </property>
      </widget>
     </item>
@@ -916,6 +916,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
       </property>
       <property name="text">
        <string/>
+      </property>
+      <property name="maxLength">
+       <number>14</number>
       </property>
       <property name="placeholderText">
        <string>111-111-111 11</string>

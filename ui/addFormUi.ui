@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>600</width>
-    <height>760</height>
+    <height>850</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,13 +19,13 @@
   <property name="minimumSize">
    <size>
     <width>600</width>
-    <height>760</height>
+    <height>850</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>600</width>
-    <height>760</height>
+    <height>850</height>
    </size>
   </property>
   <property name="font">
@@ -799,284 +799,8 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
     </font>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="3" column="0">
-     <widget class="QLabel" name="labelService">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>15</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Kartika</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Выбор предоставляемой услуги</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="10" column="2">
-     <widget class="QLineEdit" name="lineEditMiddleName">
-      <property name="font">
-       <font>
-        <family>Kartika</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="0">
-     <widget class="QLabel" name="labelCity">
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>15</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Kartika</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Населенный пункт</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="14" column="2">
-     <widget class="QComboBox" name="comboBoxStatus">
-      <property name="font">
-       <font>
-        <family>Kartika</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <item>
-       <property name="text">
-        <string>Готова</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Ожидание</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Разработка</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-    <item row="15" column="0">
-     <widget class="QLabel" name="labelWork">
-      <property name="font">
-       <font>
-        <family>Kartika</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Съёмка</string>
-      </property>
-     </widget>
-    </item>
-    <item row="15" column="2">
-     <widget class="QComboBox" name="comboBoxWork">
-      <property name="font">
-       <font>
-        <family>Kartika</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <item>
-       <property name="text">
-        <string>Ожидает выезд</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>В обработке</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Готова</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-    <item row="9" column="2">
-     <widget class="QLineEdit" name="lineEditName">
-      <property name="font">
-       <font>
-        <family>Kartika</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-     </widget>
-    </item>
-    <item row="10" column="0">
-     <widget class="QLabel" name="labelMiddleName">
-      <property name="font">
-       <font>
-        <family>Kartika</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Отчество</string>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="0">
-     <widget class="QLabel" name="labelAddress">
-      <property name="font">
-       <font>
-        <family>Kartika</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Адрес</string>
-      </property>
-     </widget>
-    </item>
-    <item row="9" column="0">
-     <widget class="QLabel" name="labelName">
-      <property name="font">
-       <font>
-        <family>Kartika</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Имя</string>
-      </property>
-     </widget>
-    </item>
-    <item row="50" column="0" colspan="3">
-     <widget class="QPushButton" name="pushButton">
-      <property name="minimumSize">
-       <size>
-        <width>90</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Kartika</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Добавить</string>
-      </property>
-     </widget>
-    </item>
-    <item row="8" column="0">
-     <widget class="QLabel" name="labelSurname">
-      <property name="font">
-       <font>
-        <family>Kartika</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Фамилия</string>
-      </property>
-     </widget>
-    </item>
-    <item row="19" column="0">
-     <widget class="QLabel" name="labelSnils">
-      <property name="font">
-       <font>
-        <family>Kartika</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>СНИЛС</string>
-      </property>
-     </widget>
-    </item>
-    <item row="22" column="2">
-     <widget class="QTextEdit" name="textEditPassport">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>350</width>
-        <height>80</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>355</width>
-        <height>80</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Kartika</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="placeholderText">
-       <string>когда? серия/номер?  кем? </string>
-      </property>
-     </widget>
-    </item>
-    <item row="16" column="2">
-     <widget class="QDateEdit" name="dateEditDataWork">
+    <item row="12" column="2">
+     <widget class="QDateEdit" name="dateEditDate">
       <property name="font">
        <font>
         <family>Kartika</family>
@@ -1088,6 +812,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
       <property name="calendarPopup">
        <bool>true</bool>
       </property>
+      <property name="timeSpec">
+       <enum>Qt::UTC</enum>
+      </property>
       <property name="date">
        <date>
         <year>2021</year>
@@ -1097,32 +824,8 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
       </property>
      </widget>
     </item>
-    <item row="8" column="2">
-     <widget class="QLineEdit" name="lineEditSurname">
-      <property name="font">
-       <font>
-        <family>Kartika</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="2">
-     <widget class="QLineEdit" name="lineEditAddress">
-      <property name="font">
-       <font>
-        <family>Kartika</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-     </widget>
-    </item>
-    <item row="19" column="2">
-     <widget class="QLineEdit" name="lineEditSnils">
+    <item row="11" column="0">
+     <widget class="QLabel" name="labelTelefone">
       <property name="font">
        <font>
         <family>Kartika</family>
@@ -1132,15 +835,12 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
        </font>
       </property>
       <property name="text">
-       <string/>
-      </property>
-      <property name="placeholderText">
-       <string>111-111-111 11</string>
+       <string>Номер телефона</string>
       </property>
      </widget>
     </item>
-    <item row="5" column="2">
-     <widget class="QLineEdit" name="lineEditCity">
+    <item row="26" column="0">
+     <widget class="QCheckBox" name="checkBoxConsent">
       <property name="font">
        <font>
         <family>Kartika</family>
@@ -1148,6 +848,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="text">
+       <string>Согласие</string>
       </property>
      </widget>
     </item>
@@ -1238,13 +941,28 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
         <bold>true</bold>
        </font>
       </property>
+      <property name="maxLength">
+       <number>11</number>
+      </property>
       <property name="placeholderText">
        <string>89216734503</string>
       </property>
      </widget>
     </item>
-    <item row="22" column="0">
-     <widget class="QLabel" name="labelPassport">
+    <item row="3" column="0">
+     <widget class="QLabel" name="labelService">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>15</height>
+       </size>
+      </property>
       <property name="font">
        <font>
         <family>Kartika</family>
@@ -1254,12 +972,21 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
        </font>
       </property>
       <property name="text">
-       <string>Паспорт</string>
+       <string>Выбор предоставляемой услуги</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
     </item>
-    <item row="11" column="0">
-     <widget class="QLabel" name="labelTelefone">
+    <item row="5" column="0">
+     <widget class="QLabel" name="labelCity">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>15</height>
+       </size>
+      </property>
       <property name="font">
        <font>
         <family>Kartika</family>
@@ -1269,12 +996,54 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
        </font>
       </property>
       <property name="text">
-       <string>Номер телефона</string>
+       <string>Населенный пункт</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
     </item>
-    <item row="24" column="0">
-     <widget class="QCheckBox" name="checkBoxConsent">
+    <item row="10" column="2">
+     <widget class="QLineEdit" name="lineEditMiddleName">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="14" column="2">
+     <widget class="QComboBox" name="comboBoxStatus">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <item>
+       <property name="text">
+        <string>Готова</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Ожидание</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Разработка</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="15" column="0">
+     <widget class="QLabel" name="labelWork">
       <property name="font">
        <font>
         <family>Kartika</family>
@@ -1284,12 +1053,147 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
        </font>
       </property>
       <property name="text">
-       <string>Согласие</string>
+       <string>Съёмка</string>
       </property>
      </widget>
     </item>
-    <item row="12" column="2">
-     <widget class="QDateEdit" name="dateEditDate">
+    <item row="9" column="2">
+     <widget class="QLineEdit" name="lineEditName">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="15" column="2">
+     <widget class="QComboBox" name="comboBoxWork">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <item>
+       <property name="text">
+        <string>Ожидает выезд</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>В обработке</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Готова</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="10" column="0">
+     <widget class="QLabel" name="labelMiddleName">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Отчество</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="labelAddress">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Адрес</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="0">
+     <widget class="QLabel" name="labelName">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Имя</string>
+      </property>
+     </widget>
+    </item>
+    <item row="52" column="0" colspan="3">
+     <widget class="QPushButton" name="pushButton">
+      <property name="minimumSize">
+       <size>
+        <width>90</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Добавить</string>
+      </property>
+     </widget>
+    </item>
+    <item row="19" column="0">
+     <widget class="QLabel" name="labelSnils">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>СНИЛС</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="labelSurname">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Фамилия</string>
+      </property>
+     </widget>
+    </item>
+    <item row="16" column="2">
+     <widget class="QDateEdit" name="dateEditDataWork">
       <property name="font">
        <font>
         <family>Kartika</family>
@@ -1301,9 +1205,6 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
       <property name="calendarPopup">
        <bool>true</bool>
       </property>
-      <property name="timeSpec">
-       <enum>Qt::UTC</enum>
-      </property>
       <property name="date">
        <date>
         <year>2021</year>
@@ -1313,8 +1214,65 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
       </property>
      </widget>
     </item>
-    <item row="12" column="0">
-     <widget class="QLabel" name="labelDate">
+    <item row="8" column="2">
+     <widget class="QLineEdit" name="lineEditSurname">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="22" column="2">
+     <widget class="QTextEdit" name="textEditPassport">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>350</width>
+        <height>80</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>355</width>
+        <height>80</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="placeholderText">
+       <string>Когда?Кем?</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="2">
+     <widget class="QLineEdit" name="lineEditAddress">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="19" column="2">
+     <widget class="QLineEdit" name="lineEditSnils">
       <property name="font">
        <font>
         <family>Kartika</family>
@@ -1324,7 +1282,40 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
        </font>
       </property>
       <property name="text">
-       <string>Дата записи</string>
+       <string/>
+      </property>
+      <property name="maxLength">
+       <number>14</number>
+      </property>
+      <property name="placeholderText">
+       <string>111-111-111 11</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="2">
+     <widget class="QLineEdit" name="lineEditCity">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="24" column="0">
+     <widget class="QLabel" name="labelDate1">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Назначить дату </string>
       </property>
      </widget>
     </item>
@@ -1343,6 +1334,21 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
       </property>
      </widget>
     </item>
+    <item row="13" column="2">
+     <widget class="QLineEdit" name="lineEditPrice">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="placeholderText">
+       <string>8000</string>
+      </property>
+     </widget>
+    </item>
     <item row="13" column="0">
      <widget class="QLabel" name="labelPrice">
       <property name="font">
@@ -1358,8 +1364,8 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
       </property>
      </widget>
     </item>
-    <item row="13" column="2">
-     <widget class="QLineEdit" name="lineEditPrice">
+    <item row="12" column="0">
+     <widget class="QLabel" name="labelDate">
       <property name="font">
        <font>
         <family>Kartika</family>
@@ -1368,8 +1374,8 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
         <bold>true</bold>
        </font>
       </property>
-      <property name="placeholderText">
-       <string>8000</string>
+      <property name="text">
+       <string>Дата записи</string>
       </property>
      </widget>
     </item>
@@ -1406,6 +1412,36 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
       </property>
      </widget>
     </item>
+    <item row="25" column="0">
+     <widget class="QCheckBox" name="checkBoxDeclaration">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Декларация</string>
+      </property>
+     </widget>
+    </item>
+    <item row="27" column="0">
+     <widget class="QCheckBox" name="checkBoxAct">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>АКТ</string>
+      </property>
+     </widget>
+    </item>
     <item row="14" column="0">
      <widget class="QLabel" name="labelStatus">
       <property name="font">
@@ -1421,8 +1457,8 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
       </property>
      </widget>
     </item>
-    <item row="25" column="0">
-     <widget class="QCheckBox" name="checkBoxAct">
+    <item row="24" column="2">
+     <widget class="QDateTimeEdit" name="dateTimeEdit">
       <property name="font">
        <font>
         <family>Kartika</family>
@@ -1431,13 +1467,58 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
         <bold>true</bold>
        </font>
       </property>
-      <property name="text">
-       <string>АКТ</string>
+      <property name="dateTime">
+       <datetime>
+        <hour>9</hour>
+        <minute>0</minute>
+        <second>0</second>
+        <year>2021</year>
+        <month>1</month>
+        <day>1</day>
+       </datetime>
+      </property>
+      <property name="maximumTime">
+       <time>
+        <hour>18</hour>
+        <minute>0</minute>
+        <second>0</second>
+       </time>
+      </property>
+      <property name="minimumTime">
+       <time>
+        <hour>9</hour>
+        <minute>0</minute>
+        <second>0</second>
+       </time>
+      </property>
+      <property name="calendarPopup">
+       <bool>true</bool>
+      </property>
+      <property name="timeSpec">
+       <enum>Qt::LocalTime</enum>
       </property>
      </widget>
     </item>
-    <item row="23" column="0">
-     <widget class="QCheckBox" name="checkBoxDeclaration">
+    <item row="23" column="2">
+     <widget class="QLineEdit" name="lineEditSeries">
+      <property name="font">
+       <font>
+        <family>Kartika</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="maxLength">
+       <number>11</number>
+      </property>
+      <property name="placeholderText">
+       <string>1111 111111</string>
+      </property>
+     </widget>
+    </item>
+    <item row="22" column="0" rowspan="2">
+     <widget class="QLabel" name="labelPassport">
       <property name="font">
        <font>
         <family>Kartika</family>
@@ -1447,7 +1528,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
        </font>
       </property>
       <property name="text">
-       <string>Декларация</string>
+       <string>Паспорт</string>
       </property>
      </widget>
     </item>

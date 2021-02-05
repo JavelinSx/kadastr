@@ -1,6 +1,7 @@
 import configparser
 import os
 import sys
+import urllib
 
 from PyQt5 import QtWidgets, QtGui, QtCore
 import sqlite3
@@ -9,12 +10,15 @@ from PyQt5.QtCore import QDate
 from PyQt5.QtGui import QIcon, QColor, QBrush, QTextCharFormat
 from PyQt5.QtWidgets import QFileDialog, QTableWidgetItem, QMessageBox, QDesktopWidget
 
+import requests
+from bs4 import BeautifulSoup
+
 import ui.viewAllFormUi
 import ui.startWindowUi
 import ui.addFormUi
 import ui.viewSelectFormUi
 import ctypes
-
+import time
 
 class startWindow(QtWidgets.QMainWindow, ui.startWindowUi.Ui_startWindowUi):
     def __init__(self, parent=None):
@@ -390,16 +394,22 @@ class viewAllForm(QtWidgets.QMainWindow, ui.viewAllFormUi.Ui_viewAllFormUi):
 
 
 class checkAndUpdate():
-    #проверка файлов по размеру(то что имеется, относительно того что есть в репозитории)
-    #батники для каждого окна
-    #батник для сборки
-    #возможность скачивания через НЕ основной аккаунт
 
-    pass
+    url = 'https://github.com/JavelinSx/kadastr'
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+    response = requests.get(url, headers=headers)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    print(soup)
+    timeUpdate = soup.find('relative-time', class_='no-wrap')
+    print(timeUpdate)
+    dateText = timeUpdate.text
+    print(time.strftime("%b%m%Y"))
+    print(dateText)
+
 
 
 def main():
-
 
     app = QtWidgets.QApplication(sys.argv)
     window = startWindow()
