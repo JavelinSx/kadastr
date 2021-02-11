@@ -6,7 +6,7 @@ import urllib
 from PyQt5 import QtWidgets, QtGui, QtCore
 import sqlite3
 
-from PyQt5.QtCore import QDate, QDir
+from PyQt5.QtCore import QDate, QDir, QDateTime
 from PyQt5.QtGui import QIcon, QColor, QBrush, QTextCharFormat
 from PyQt5.QtWidgets import QFileDialog, QTableWidgetItem, QMessageBox, QDesktopWidget
 
@@ -121,9 +121,9 @@ class addForm(QtWidgets.QMainWindow, ui.addFormUi.Ui_addFormUi):
                          self.dateEditDate.text(), self.lineEditPrice.text(), self.textEditInfo.toPlainText(),
                          self.comboBoxStatus.itemText(self.comboBoxStatus.currentIndex()),
                          self.comboBoxWork.itemText(self.comboBoxWork.currentIndex()),
-                         self.dateEditDataWork.text(), os.path.abspath(self.getFolder()))]
+                         self.dateEditDataWork.text(), os.path.abspath(self.getFolder()), self.dateTimeEdit.text())]
 
-                self.conn.executemany("INSERT INTO statement VALUES (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", mass)
+                self.conn.executemany("INSERT INTO statement VALUES (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", mass)
                 os.makedirs(self.getFolder())  # создание директории по заданному пути
                 self.openFolder()  # открытие созданной директории
                 if self.conn.commit():
@@ -166,37 +166,29 @@ class viewSelectForm(QtWidgets.QMainWindow, ui.viewSelectFormUi.Ui_viewSelectFor
     def initUi(self):
         self.setWindowIcon(QIcon('img/edit.ico'))
 
+    def dateEdit(self, date):
+
+        dayD = int(date[0:2])
+        mouthD = int(date[3:5])
+        yearD = int(date[6:10])
+        hourD = int(date[12])
+        date = QDateTime()
+        dateFill = QDate(yearD, dayD, mouthD)
+        return dateFill
+
     def fillInfo(self, mass):  # копирование и воод информации о выделенной заявке
         self.massUpdate = mass
-        fullDateD = mass[0][8]
-        dayD = int(fullDateD[0:2])
-        mouthD = int(fullDateD[3:5])
-        yearD = int(fullDateD[6:10])
-
-        fullDateDD = mass[0][13]
-        dayDD = int(fullDateDD[0:2])
-        mouthDD = int(fullDateDD[3:5])
-        yearDD = int(fullDateDD[6:10])
-
-
-        getIndexStatus = self.comboBoxStatus.findText(mass[0][11])
-        getIndexWork = self.comboBoxWork.findText(mass[0][12])
-
-        date = QDate(yearD, dayD, mouthD)
-        dateD = QDate(yearDD, dayDD, mouthDD)
-
-
-
+        print(mass)
         self.lineEditSurname.setText(mass[0][4])
         self.lineEditName.setText(mass[0][5])
         self.lineEditMiddleName.setText(mass[0][6])
         self.lineEditTelefone.setText(mass[0][7])
-        self.dateEditDate.setDate(date)
+        self.dateEditDate.setDate(self.dateEdit(mass[0][8]))
         self.lineEditPrice.setText(mass[0][9])
         self.textEditInfo.setText(mass[0][10])
-        self.comboBoxStatus.setCurrentIndex(getIndexStatus)
-        self.comboBoxWork.setCurrentIndex(getIndexWork)
-        self.dateEditDataWork.setDate(dateD)
+        self.comboBoxStatus.setCurrentIndex(self.comboBoxStatus.findText(mass[0][11]))
+        self.comboBoxWork.setCurrentIndex(self.comboBoxWork.findText(mass[0][12]))
+        self.dateEditDataWork.setDate(self.dateEdit(mass[0][13]))
         self.getPathFolder = mass[0][14]
 
 
