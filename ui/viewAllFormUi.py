@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_viewAllFormUi(object):
     def setupUi(self, viewAllFormUi):
         viewAllFormUi.setObjectName("viewAllFormUi")
-        viewAllFormUi.resize(1319, 556)
+        viewAllFormUi.resize(1319, 553)
         font = QtGui.QFont()
         font.setFamily("Kartika")
         font.setPointSize(10)
@@ -25,9 +25,9 @@ class Ui_viewAllFormUi(object):
 "QWidget\n"
 "{\n"
 "    background-color: #a3a3a3;\n"
-"    color: #fff;\n"
-"    selection-background-color: #fff;\n"
-"    selection-color: #000;\n"
+"    color: #3a3a3d;\n"
+"    selection-background-color: #3a3a3d;\n"
+"    selection-color: #3a3a3d;\n"
 "\n"
 "}\n"
 "\n"
@@ -79,7 +79,7 @@ class Ui_viewAllFormUi(object):
 "QPushButton\n"
 "{\n"
 "    background-color: #bdbdbd;\n"
-"    color: #fff;\n"
+"    color: #3a3a3d;\n"
 "    min-width: 80px;\n"
 "    border-radius: 4px;\n"
 "    padding: 5px;\n"
@@ -132,8 +132,8 @@ class Ui_viewAllFormUi(object):
 "/*-----QLineEdit-----*/\n"
 "QLineEdit\n"
 "{\n"
-"    background-color: #lightgray;\n"
-"    color : #fff;\n"
+"    background-color: #f5f5f5;\n"
+"    color: #3a3a3d;\n"
 "    border: 1px solid #f0f0f0;\n"
 "    padding: 3px;\n"
 "    padding-left: 5px;\n"
@@ -145,7 +145,7 @@ class Ui_viewAllFormUi(object):
 "/*-----QPlainTExtEdit-----*/\n"
 "QPlainTextEdit\n"
 "{\n"
-"    background-color: #575757;\n"
+"    background-color: #f5f5f5;\n"
 "    color : #fff;\n"
 "    border: 1px solid #f0f0f0;\n"
 "    padding: 3px;\n"
@@ -155,7 +155,8 @@ class Ui_viewAllFormUi(object):
 "}\n"
 "QTextEdit\n"
 "{\n"
-"    background-color: #lightgray;\n"
+"    color: #3a3a3d;\n"
+"    background-color: #f5f5f5;\n"
 "    border-radius: 4px;\n"
 "    border: 1px solid #f0f0f0;\n"
 "}\n"
@@ -188,9 +189,9 @@ class Ui_viewAllFormUi(object):
 "/*-----QComboBox-----*/\n"
 "QComboBox\n"
 "{\n"
-"    background-color: #lightgray;\n"
+"    background-color: #f5f5f5;\n"
 "    padding-left: 6px;\n"
-"    color: #fff;\n"
+"    color: #3a3a3d;\n"
 "    height: 20px;\n"
 "    border-radius: 4px;\n"
 "    border: 1px solid #f0f0f0;\n"
@@ -252,12 +253,19 @@ class Ui_viewAllFormUi(object):
 "\n"
 "QDateEdit\n"
 "{\n"
-"        background-color: #lightgray;\n"
+"        color: #3a3a3d;\n"
+"        background-color: #f5f5f5;\n"
 "        border: 1px solid #f0f0f0;\n"
 "        border-radius: 4px;\n"
 "}\n"
-"\n"
-"\n"
+"QLabel\n"
+"{\n"
+"        color: #3a3a3d;\n"
+"}\n"
+"QDateTimeEdit\n"
+"{\n"
+"        background-color: #f5f5f5;\n"
+"}\n"
 "\n"
 "/*-----QHeaderView-----*/\n"
 "QHeaderView::section\n"
@@ -268,7 +276,10 @@ class Ui_viewAllFormUi(object):
 "    padding: 4px;\n"
 "    \n"
 "}\n"
-"\n"
+"QFont\n"
+"{\n"
+"        background-color: #3a3a3d;\n"
+"}\n"
 "\n"
 "QHeaderView::section:disabled\n"
 "{\n"
@@ -776,16 +787,16 @@ class Ui_viewAllFormUi(object):
         self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
         self.tableWidget.setMinimumSize(QtCore.QSize(1300, 300))
         palette = QtGui.QPalette()
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)
         brush = QtGui.QBrush(QtGui.QColor(163, 163, 163))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Text, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ButtonText, brush)
         brush = QtGui.QBrush(QtGui.QColor(163, 163, 163))
@@ -794,22 +805,22 @@ class Ui_viewAllFormUi(object):
         brush = QtGui.QBrush(QtGui.QColor(163, 163, 163))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Highlight, brush)
-        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.HighlightedText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
         brush = QtGui.QBrush(QtGui.QColor(163, 163, 163))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Text, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ButtonText, brush)
         brush = QtGui.QBrush(QtGui.QColor(163, 163, 163))
@@ -818,22 +829,22 @@ class Ui_viewAllFormUi(object):
         brush = QtGui.QBrush(QtGui.QColor(163, 163, 163))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Highlight, brush)
-        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.HighlightedText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
         brush = QtGui.QBrush(QtGui.QColor(163, 163, 163))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Text, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ButtonText, brush)
         brush = QtGui.QBrush(QtGui.QColor(163, 163, 163))
@@ -842,10 +853,10 @@ class Ui_viewAllFormUi(object):
         brush = QtGui.QBrush(QtGui.QColor(163, 163, 163))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Highlight, brush)
-        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.HighlightedText, brush)
         self.tableWidget.setPalette(palette)
@@ -934,16 +945,16 @@ class Ui_viewAllFormUi(object):
         self.pushButtonSearch.setMinimumSize(QtCore.QSize(90, 30))
         self.pushButtonSearch.setMaximumSize(QtCore.QSize(300, 30))
         palette = QtGui.QPalette()
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)
         brush = QtGui.QBrush(QtGui.QColor(189, 189, 189))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Text, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ButtonText, brush)
         brush = QtGui.QBrush(QtGui.QColor(189, 189, 189))
@@ -952,22 +963,22 @@ class Ui_viewAllFormUi(object):
         brush = QtGui.QBrush(QtGui.QColor(189, 189, 189))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Highlight, brush)
-        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.HighlightedText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
         brush = QtGui.QBrush(QtGui.QColor(189, 189, 189))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Text, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ButtonText, brush)
         brush = QtGui.QBrush(QtGui.QColor(189, 189, 189))
@@ -976,10 +987,10 @@ class Ui_viewAllFormUi(object):
         brush = QtGui.QBrush(QtGui.QColor(189, 189, 189))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Highlight, brush)
-        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.HighlightedText, brush)
         brush = QtGui.QBrush(QtGui.QColor(149, 149, 149))
@@ -1000,10 +1011,10 @@ class Ui_viewAllFormUi(object):
         brush = QtGui.QBrush(QtGui.QColor(96, 96, 96))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Highlight, brush)
-        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.HighlightedText, brush)
         self.pushButtonSearch.setPalette(palette)

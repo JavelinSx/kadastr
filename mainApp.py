@@ -6,7 +6,7 @@ import urllib
 from PyQt5 import QtWidgets, QtGui, QtCore
 import sqlite3
 
-from PyQt5.QtCore import QDate
+from PyQt5.QtCore import QDate, QDir
 from PyQt5.QtGui import QIcon, QColor, QBrush, QTextCharFormat
 from PyQt5.QtWidgets import QFileDialog, QTableWidgetItem, QMessageBox, QDesktopWidget
 
@@ -35,7 +35,7 @@ class startWindow(QtWidgets.QMainWindow, ui.startWindowUi.Ui_startWindowUi):
         self.cursor = self.conn.cursor()
 
     def initUi(self):
-        self.setWindowIcon(QIcon('img/main.png'))
+        self.setWindowIcon(QIcon('img/main.ico'))
 
     def createConfig(self):
         try:
@@ -88,13 +88,14 @@ class addForm(QtWidgets.QMainWindow, ui.addFormUi.Ui_addFormUi):
         self.initUi()
 
     def initUi(self):
-        self.setWindowIcon(QIcon('img/new.png'))
+        self.setWindowIcon(QIcon('img/new.ico'))
 
     def getFolder(self):  # получение полного пути до созданной директории
         provide = self.comboBoxProvideServices.itemText(self.comboBoxProvideServices.currentIndex())
         city = self.lineEditCity.text()
         address = self.lineEditAddress.text()
         fullPathToDir = os.path.join(self.pathFolder, provide, city, address)
+
         return os.path.abspath(fullPathToDir)
 
     def AllClear(self):
@@ -121,6 +122,7 @@ class addForm(QtWidgets.QMainWindow, ui.addFormUi.Ui_addFormUi):
                          self.comboBoxStatus.itemText(self.comboBoxStatus.currentIndex()),
                          self.comboBoxWork.itemText(self.comboBoxWork.currentIndex()),
                          self.dateEditDataWork.text(), os.path.abspath(self.getFolder()))]
+
                 self.conn.executemany("INSERT INTO statement VALUES (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", mass)
                 os.makedirs(self.getFolder())  # создание директории по заданному пути
                 self.openFolder()  # открытие созданной директории
@@ -162,7 +164,7 @@ class viewSelectForm(QtWidgets.QMainWindow, ui.viewSelectFormUi.Ui_viewSelectFor
         self.initUi()
 
     def initUi(self):
-        self.setWindowIcon(QIcon('img/edit.png'))
+        self.setWindowIcon(QIcon('img/edit.ico'))
 
     def fillInfo(self, mass):  # копирование и воод информации о выделенной заявке
         self.massUpdate = mass
@@ -275,7 +277,7 @@ class viewAllForm(QtWidgets.QMainWindow, ui.viewAllFormUi.Ui_viewAllFormUi):
         self.fillRecord(records)
 
     def initUi(self):
-        self.setWindowIcon(QIcon('img/BD.png'))
+        self.setWindowIcon(QIcon('img/BD.ico'))
         self.tableWidget.setSortingEnabled(True)
         self.tableWidget.verticalHeader().hide()
 
@@ -399,13 +401,13 @@ class checkAndUpdate():
     headers = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
     response = requests.get(url, headers=headers)
-    soup = BeautifulSoup(response.text, 'html.parser')
-    print(soup)
-    timeUpdate = soup.find('relative-time', class_='no-wrap')
-    print(timeUpdate)
-    dateText = timeUpdate.text
-    print(time.strftime("%b%m%Y"))
-    print(dateText)
+    #soup = BeautifulSoup(response.text, 'html.parser')
+    #print(soup)
+    #timeUpdate = soup.find('relative-time', class_='no-wrap')
+    #print(timeUpdate)
+    #dateText = timeUpdate.text
+    #print(time.strftime("%b%m%Y"))
+    #print(dateText)
 
 
 

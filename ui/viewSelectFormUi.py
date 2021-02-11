@@ -29,9 +29,9 @@ class Ui_viewSelectFormUi(object):
 "QWidget\n"
 "{\n"
 "    background-color: #a3a3a3;\n"
-"    color: #fff;\n"
-"    selection-background-color: #fff;\n"
-"    selection-color: #000;\n"
+"    color: #3a3a3d;\n"
+"    selection-background-color: #3a3a3d;\n"
+"    selection-color: #3a3a3d;\n"
 "\n"
 "}\n"
 "\n"
@@ -83,7 +83,7 @@ class Ui_viewSelectFormUi(object):
 "QPushButton\n"
 "{\n"
 "    background-color: #bdbdbd;\n"
-"    color: #fff;\n"
+"    color: #3a3a3d;\n"
 "    min-width: 80px;\n"
 "    border-radius: 4px;\n"
 "    padding: 5px;\n"
@@ -136,8 +136,8 @@ class Ui_viewSelectFormUi(object):
 "/*-----QLineEdit-----*/\n"
 "QLineEdit\n"
 "{\n"
-"    background-color: #lightgray;\n"
-"    color : #fff;\n"
+"    background-color: #f5f5f5;\n"
+"    color: #3a3a3d;\n"
 "    border: 1px solid #f0f0f0;\n"
 "    padding: 3px;\n"
 "    padding-left: 5px;\n"
@@ -149,7 +149,7 @@ class Ui_viewSelectFormUi(object):
 "/*-----QPlainTExtEdit-----*/\n"
 "QPlainTextEdit\n"
 "{\n"
-"    background-color: #575757;\n"
+"    background-color: #f5f5f5;\n"
 "    color : #fff;\n"
 "    border: 1px solid #f0f0f0;\n"
 "    padding: 3px;\n"
@@ -159,7 +159,8 @@ class Ui_viewSelectFormUi(object):
 "}\n"
 "QTextEdit\n"
 "{\n"
-"    background-color: #lightgray;\n"
+"    color: #3a3a3d;\n"
+"    background-color: #f5f5f5;\n"
 "    border-radius: 4px;\n"
 "    border: 1px solid #f0f0f0;\n"
 "}\n"
@@ -192,9 +193,9 @@ class Ui_viewSelectFormUi(object):
 "/*-----QComboBox-----*/\n"
 "QComboBox\n"
 "{\n"
-"    background-color: #lightgray;\n"
+"    background-color: #f5f5f5;\n"
 "    padding-left: 6px;\n"
-"    color: #fff;\n"
+"    color: #3a3a3d;\n"
 "    height: 20px;\n"
 "    border-radius: 4px;\n"
 "    border: 1px solid #f0f0f0;\n"
@@ -256,12 +257,19 @@ class Ui_viewSelectFormUi(object):
 "\n"
 "QDateEdit\n"
 "{\n"
-"        background-color: #lightgray;\n"
+"        color: #3a3a3d;\n"
+"        background-color: #f5f5f5;\n"
 "        border: 1px solid #f0f0f0;\n"
 "        border-radius: 4px;\n"
 "}\n"
-"\n"
-"\n"
+"QLabel\n"
+"{\n"
+"        color: #3a3a3d;\n"
+"}\n"
+"QDateTimeEdit\n"
+"{\n"
+"        background-color: #f5f5f5;\n"
+"}\n"
 "\n"
 "/*-----QHeaderView-----*/\n"
 "QHeaderView::section\n"
@@ -272,7 +280,10 @@ class Ui_viewSelectFormUi(object):
 "    padding: 4px;\n"
 "    \n"
 "}\n"
-"\n"
+"QFont\n"
+"{\n"
+"        background-color: #3a3a3d;\n"
+"}\n"
 "\n"
 "QHeaderView::section:disabled\n"
 "{\n"
@@ -852,6 +863,7 @@ class Ui_viewSelectFormUi(object):
         font.setWeight(75)
         self.lineEditSnils.setFont(font)
         self.lineEditSnils.setText("")
+        self.lineEditSnils.setMaxLength(14)
         self.lineEditSnils.setObjectName("lineEditSnils")
         self.gridLayout.addWidget(self.lineEditSnils, 24, 1, 1, 1)
         self.dateEditDate = QtWidgets.QDateEdit(self.centralwidget)
@@ -1089,7 +1101,7 @@ class Ui_viewSelectFormUi(object):
     def retranslateUi(self, viewSelectFormUi):
         _translate = QtCore.QCoreApplication.translate
         viewSelectFormUi.setWindowTitle(_translate("viewSelectFormUi", "Просмотр/изменение данных"))
-        self.textEditPassport.setPlaceholderText(_translate("viewSelectFormUi", "когда? серия/номер?  кем? "))
+        self.textEditPassport.setPlaceholderText(_translate("viewSelectFormUi", "Когда? Кем? "))
         self.lineEditPrice.setPlaceholderText(_translate("viewSelectFormUi", "8000"))
         self.comboBoxStatus.setItemText(0, _translate("viewSelectFormUi", "Готова"))
         self.comboBoxStatus.setItemText(1, _translate("viewSelectFormUi", "Ожидание"))

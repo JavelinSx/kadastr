@@ -14,14 +14,14 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_addFormUi(object):
     def setupUi(self, addFormUi):
         addFormUi.setObjectName("addFormUi")
-        addFormUi.resize(600, 760)
+        addFormUi.resize(600, 850)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(addFormUi.sizePolicy().hasHeightForWidth())
         addFormUi.setSizePolicy(sizePolicy)
-        addFormUi.setMinimumSize(QtCore.QSize(600, 760))
-        addFormUi.setMaximumSize(QtCore.QSize(600, 760))
+        addFormUi.setMinimumSize(QtCore.QSize(600, 850))
+        addFormUi.setMaximumSize(QtCore.QSize(600, 850))
         font = QtGui.QFont()
         font.setPointSize(10)
         addFormUi.setFont(font)
@@ -29,9 +29,9 @@ class Ui_addFormUi(object):
 "QWidget\n"
 "{\n"
 "    background-color: #a3a3a3;\n"
-"    color: #fff;\n"
-"    selection-background-color: #fff;\n"
-"    selection-color: #000;\n"
+"    color: #3a3a3d;\n"
+"    selection-background-color: #3a3a3d;\n"
+"    selection-color: #3a3a3d;\n"
 "\n"
 "}\n"
 "\n"
@@ -83,7 +83,7 @@ class Ui_addFormUi(object):
 "QPushButton\n"
 "{\n"
 "    background-color: #bdbdbd;\n"
-"    color: #fff;\n"
+"    color: #3a3a3d;\n"
 "    min-width: 80px;\n"
 "    border-radius: 4px;\n"
 "    padding: 5px;\n"
@@ -136,8 +136,8 @@ class Ui_addFormUi(object):
 "/*-----QLineEdit-----*/\n"
 "QLineEdit\n"
 "{\n"
-"    background-color: #lightgray;\n"
-"    color : #fff;\n"
+"    background-color: #f5f5f5;\n"
+"    color: #3a3a3d;\n"
 "    border: 1px solid #f0f0f0;\n"
 "    padding: 3px;\n"
 "    padding-left: 5px;\n"
@@ -149,7 +149,7 @@ class Ui_addFormUi(object):
 "/*-----QPlainTExtEdit-----*/\n"
 "QPlainTextEdit\n"
 "{\n"
-"    background-color: #575757;\n"
+"    background-color: #f5f5f5;\n"
 "    color : #fff;\n"
 "    border: 1px solid #f0f0f0;\n"
 "    padding: 3px;\n"
@@ -159,7 +159,8 @@ class Ui_addFormUi(object):
 "}\n"
 "QTextEdit\n"
 "{\n"
-"    background-color: #lightgray;\n"
+"    color: #3a3a3d;\n"
+"    background-color: #f5f5f5;\n"
 "    border-radius: 4px;\n"
 "    border: 1px solid #f0f0f0;\n"
 "}\n"
@@ -192,9 +193,9 @@ class Ui_addFormUi(object):
 "/*-----QComboBox-----*/\n"
 "QComboBox\n"
 "{\n"
-"    background-color: #lightgray;\n"
+"    background-color: #f5f5f5;\n"
 "    padding-left: 6px;\n"
-"    color: #fff;\n"
+"    color: #3a3a3d;\n"
 "    height: 20px;\n"
 "    border-radius: 4px;\n"
 "    border: 1px solid #f0f0f0;\n"
@@ -256,12 +257,19 @@ class Ui_addFormUi(object):
 "\n"
 "QDateEdit\n"
 "{\n"
-"        background-color: #lightgray;\n"
+"        color: #3a3a3d;\n"
+"        background-color: #f5f5f5;\n"
 "        border: 1px solid #f0f0f0;\n"
 "        border-radius: 4px;\n"
 "}\n"
-"\n"
-"\n"
+"QLabel\n"
+"{\n"
+"        color: #3a3a3d;\n"
+"}\n"
+"QDateTimeEdit\n"
+"{\n"
+"        background-color: #f5f5f5;\n"
+"}\n"
 "\n"
 "/*-----QHeaderView-----*/\n"
 "QHeaderView::section\n"
@@ -272,7 +280,10 @@ class Ui_addFormUi(object):
 "    padding: 4px;\n"
 "    \n"
 "}\n"
-"\n"
+"QFont\n"
+"{\n"
+"        background-color: #3a3a3d;\n"
+"}\n"
 "\n"
 "QHeaderView::section:disabled\n"
 "{\n"
@@ -781,6 +792,74 @@ class Ui_addFormUi(object):
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
+        self.dateEditDate = QtWidgets.QDateEdit(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Kartika")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.dateEditDate.setFont(font)
+        self.dateEditDate.setCalendarPopup(True)
+        self.dateEditDate.setTimeSpec(QtCore.Qt.UTC)
+        self.dateEditDate.setDate(QtCore.QDate(2021, 1, 1))
+        self.dateEditDate.setObjectName("dateEditDate")
+        self.gridLayout.addWidget(self.dateEditDate, 12, 2, 1, 1)
+        self.labelTelefone = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Kartika")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labelTelefone.setFont(font)
+        self.labelTelefone.setObjectName("labelTelefone")
+        self.gridLayout.addWidget(self.labelTelefone, 11, 0, 1, 1)
+        self.checkBoxConsent = QtWidgets.QCheckBox(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Kartika")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.checkBoxConsent.setFont(font)
+        self.checkBoxConsent.setObjectName("checkBoxConsent")
+        self.gridLayout.addWidget(self.checkBoxConsent, 26, 0, 1, 1)
+        self.comboBoxProvideServices = QtWidgets.QComboBox(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Kartika")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.comboBoxProvideServices.setFont(font)
+        self.comboBoxProvideServices.setObjectName("comboBoxProvideServices")
+        self.comboBoxProvideServices.addItem("")
+        self.comboBoxProvideServices.addItem("")
+        self.comboBoxProvideServices.addItem("")
+        self.comboBoxProvideServices.addItem("")
+        self.comboBoxProvideServices.addItem("")
+        self.comboBoxProvideServices.addItem("")
+        self.comboBoxProvideServices.addItem("")
+        self.comboBoxProvideServices.addItem("")
+        self.comboBoxProvideServices.addItem("")
+        self.comboBoxProvideServices.addItem("")
+        self.gridLayout.addWidget(self.comboBoxProvideServices, 3, 2, 1, 1)
+        self.labelDataWork = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Kartika")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labelDataWork.setFont(font)
+        self.labelDataWork.setObjectName("labelDataWork")
+        self.gridLayout.addWidget(self.labelDataWork, 16, 0, 1, 1)
+        self.lineEditTelefone = QtWidgets.QLineEdit(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Kartika")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lineEditTelefone.setFont(font)
+        self.lineEditTelefone.setMaxLength(11)
+        self.lineEditTelefone.setObjectName("lineEditTelefone")
+        self.gridLayout.addWidget(self.lineEditTelefone, 11, 2, 1, 1)
         self.labelService = QtWidgets.QLabel(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -797,15 +876,6 @@ class Ui_addFormUi(object):
         self.labelService.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.labelService.setObjectName("labelService")
         self.gridLayout.addWidget(self.labelService, 3, 0, 1, 1)
-        self.lineEditMiddleName = QtWidgets.QLineEdit(self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("Kartika")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.lineEditMiddleName.setFont(font)
-        self.lineEditMiddleName.setObjectName("lineEditMiddleName")
-        self.gridLayout.addWidget(self.lineEditMiddleName, 10, 2, 1, 1)
         self.labelCity = QtWidgets.QLabel(self.centralwidget)
         self.labelCity.setMaximumSize(QtCore.QSize(16777215, 15))
         font = QtGui.QFont()
@@ -817,6 +887,15 @@ class Ui_addFormUi(object):
         self.labelCity.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.labelCity.setObjectName("labelCity")
         self.gridLayout.addWidget(self.labelCity, 5, 0, 1, 1)
+        self.lineEditMiddleName = QtWidgets.QLineEdit(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Kartika")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lineEditMiddleName.setFont(font)
+        self.lineEditMiddleName.setObjectName("lineEditMiddleName")
+        self.gridLayout.addWidget(self.lineEditMiddleName, 10, 2, 1, 1)
         self.comboBoxStatus = QtWidgets.QComboBox(self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Kartika")
@@ -838,6 +917,15 @@ class Ui_addFormUi(object):
         self.labelWork.setFont(font)
         self.labelWork.setObjectName("labelWork")
         self.gridLayout.addWidget(self.labelWork, 15, 0, 1, 1)
+        self.lineEditName = QtWidgets.QLineEdit(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Kartika")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lineEditName.setFont(font)
+        self.lineEditName.setObjectName("lineEditName")
+        self.gridLayout.addWidget(self.lineEditName, 9, 2, 1, 1)
         self.comboBoxWork = QtWidgets.QComboBox(self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Kartika")
@@ -850,15 +938,6 @@ class Ui_addFormUi(object):
         self.comboBoxWork.addItem("")
         self.comboBoxWork.addItem("")
         self.gridLayout.addWidget(self.comboBoxWork, 15, 2, 1, 1)
-        self.lineEditName = QtWidgets.QLineEdit(self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("Kartika")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.lineEditName.setFont(font)
-        self.lineEditName.setObjectName("lineEditName")
-        self.gridLayout.addWidget(self.lineEditName, 9, 2, 1, 1)
         self.labelMiddleName = QtWidgets.QLabel(self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Kartika")
@@ -895,16 +974,7 @@ class Ui_addFormUi(object):
         font.setWeight(75)
         self.pushButton.setFont(font)
         self.pushButton.setObjectName("pushButton")
-        self.gridLayout.addWidget(self.pushButton, 50, 0, 1, 3)
-        self.labelSurname = QtWidgets.QLabel(self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("Kartika")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.labelSurname.setFont(font)
-        self.labelSurname.setObjectName("labelSurname")
-        self.gridLayout.addWidget(self.labelSurname, 8, 0, 1, 1)
+        self.gridLayout.addWidget(self.pushButton, 52, 0, 1, 3)
         self.labelSnils = QtWidgets.QLabel(self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Kartika")
@@ -914,22 +984,15 @@ class Ui_addFormUi(object):
         self.labelSnils.setFont(font)
         self.labelSnils.setObjectName("labelSnils")
         self.gridLayout.addWidget(self.labelSnils, 19, 0, 1, 1)
-        self.textEditPassport = QtWidgets.QTextEdit(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.textEditPassport.sizePolicy().hasHeightForWidth())
-        self.textEditPassport.setSizePolicy(sizePolicy)
-        self.textEditPassport.setMinimumSize(QtCore.QSize(350, 80))
-        self.textEditPassport.setMaximumSize(QtCore.QSize(355, 80))
+        self.labelSurname = QtWidgets.QLabel(self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Kartika")
         font.setPointSize(10)
         font.setBold(True)
         font.setWeight(75)
-        self.textEditPassport.setFont(font)
-        self.textEditPassport.setObjectName("textEditPassport")
-        self.gridLayout.addWidget(self.textEditPassport, 22, 2, 1, 1)
+        self.labelSurname.setFont(font)
+        self.labelSurname.setObjectName("labelSurname")
+        self.gridLayout.addWidget(self.labelSurname, 8, 0, 1, 1)
         self.dateEditDataWork = QtWidgets.QDateEdit(self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Kartika")
@@ -950,6 +1013,22 @@ class Ui_addFormUi(object):
         self.lineEditSurname.setFont(font)
         self.lineEditSurname.setObjectName("lineEditSurname")
         self.gridLayout.addWidget(self.lineEditSurname, 8, 2, 1, 1)
+        self.textEditPassport = QtWidgets.QTextEdit(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.textEditPassport.sizePolicy().hasHeightForWidth())
+        self.textEditPassport.setSizePolicy(sizePolicy)
+        self.textEditPassport.setMinimumSize(QtCore.QSize(350, 80))
+        self.textEditPassport.setMaximumSize(QtCore.QSize(355, 80))
+        font = QtGui.QFont()
+        font.setFamily("Kartika")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.textEditPassport.setFont(font)
+        self.textEditPassport.setObjectName("textEditPassport")
+        self.gridLayout.addWidget(self.textEditPassport, 22, 2, 1, 1)
         self.lineEditAddress = QtWidgets.QLineEdit(self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Kartika")
@@ -967,6 +1046,7 @@ class Ui_addFormUi(object):
         font.setWeight(75)
         self.lineEditSnils.setFont(font)
         self.lineEditSnils.setText("")
+        self.lineEditSnils.setMaxLength(14)
         self.lineEditSnils.setObjectName("lineEditSnils")
         self.gridLayout.addWidget(self.lineEditSnils, 19, 2, 1, 1)
         self.lineEditCity = QtWidgets.QLineEdit(self.centralwidget)
@@ -978,91 +1058,15 @@ class Ui_addFormUi(object):
         self.lineEditCity.setFont(font)
         self.lineEditCity.setObjectName("lineEditCity")
         self.gridLayout.addWidget(self.lineEditCity, 5, 2, 1, 1)
-        self.comboBoxProvideServices = QtWidgets.QComboBox(self.centralwidget)
+        self.labelDate1 = QtWidgets.QLabel(self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Kartika")
         font.setPointSize(10)
         font.setBold(True)
         font.setWeight(75)
-        self.comboBoxProvideServices.setFont(font)
-        self.comboBoxProvideServices.setObjectName("comboBoxProvideServices")
-        self.comboBoxProvideServices.addItem("")
-        self.comboBoxProvideServices.addItem("")
-        self.comboBoxProvideServices.addItem("")
-        self.comboBoxProvideServices.addItem("")
-        self.comboBoxProvideServices.addItem("")
-        self.comboBoxProvideServices.addItem("")
-        self.comboBoxProvideServices.addItem("")
-        self.comboBoxProvideServices.addItem("")
-        self.comboBoxProvideServices.addItem("")
-        self.comboBoxProvideServices.addItem("")
-        self.gridLayout.addWidget(self.comboBoxProvideServices, 3, 2, 1, 1)
-        self.labelDataWork = QtWidgets.QLabel(self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("Kartika")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.labelDataWork.setFont(font)
-        self.labelDataWork.setObjectName("labelDataWork")
-        self.gridLayout.addWidget(self.labelDataWork, 16, 0, 1, 1)
-        self.lineEditTelefone = QtWidgets.QLineEdit(self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("Kartika")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.lineEditTelefone.setFont(font)
-        self.lineEditTelefone.setObjectName("lineEditTelefone")
-        self.gridLayout.addWidget(self.lineEditTelefone, 11, 2, 1, 1)
-        self.labelPassport = QtWidgets.QLabel(self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("Kartika")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.labelPassport.setFont(font)
-        self.labelPassport.setObjectName("labelPassport")
-        self.gridLayout.addWidget(self.labelPassport, 22, 0, 1, 1)
-        self.labelTelefone = QtWidgets.QLabel(self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("Kartika")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.labelTelefone.setFont(font)
-        self.labelTelefone.setObjectName("labelTelefone")
-        self.gridLayout.addWidget(self.labelTelefone, 11, 0, 1, 1)
-        self.checkBoxConsent = QtWidgets.QCheckBox(self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("Kartika")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.checkBoxConsent.setFont(font)
-        self.checkBoxConsent.setObjectName("checkBoxConsent")
-        self.gridLayout.addWidget(self.checkBoxConsent, 24, 0, 1, 1)
-        self.dateEditDate = QtWidgets.QDateEdit(self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("Kartika")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.dateEditDate.setFont(font)
-        self.dateEditDate.setCalendarPopup(True)
-        self.dateEditDate.setTimeSpec(QtCore.Qt.UTC)
-        self.dateEditDate.setDate(QtCore.QDate(2021, 1, 1))
-        self.dateEditDate.setObjectName("dateEditDate")
-        self.gridLayout.addWidget(self.dateEditDate, 12, 2, 1, 1)
-        self.labelDate = QtWidgets.QLabel(self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("Kartika")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.labelDate.setFont(font)
-        self.labelDate.setObjectName("labelDate")
-        self.gridLayout.addWidget(self.labelDate, 12, 0, 1, 1)
+        self.labelDate1.setFont(font)
+        self.labelDate1.setObjectName("labelDate1")
+        self.gridLayout.addWidget(self.labelDate1, 24, 0, 1, 1)
         self.labelInfo = QtWidgets.QLabel(self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Kartika")
@@ -1072,15 +1076,6 @@ class Ui_addFormUi(object):
         self.labelInfo.setFont(font)
         self.labelInfo.setObjectName("labelInfo")
         self.gridLayout.addWidget(self.labelInfo, 17, 0, 1, 1)
-        self.labelPrice = QtWidgets.QLabel(self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("Kartika")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.labelPrice.setFont(font)
-        self.labelPrice.setObjectName("labelPrice")
-        self.gridLayout.addWidget(self.labelPrice, 13, 0, 1, 1)
         self.lineEditPrice = QtWidgets.QLineEdit(self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Kartika")
@@ -1090,6 +1085,24 @@ class Ui_addFormUi(object):
         self.lineEditPrice.setFont(font)
         self.lineEditPrice.setObjectName("lineEditPrice")
         self.gridLayout.addWidget(self.lineEditPrice, 13, 2, 1, 1)
+        self.labelPrice = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Kartika")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labelPrice.setFont(font)
+        self.labelPrice.setObjectName("labelPrice")
+        self.gridLayout.addWidget(self.labelPrice, 13, 0, 1, 1)
+        self.labelDate = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Kartika")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labelDate.setFont(font)
+        self.labelDate.setObjectName("labelDate")
+        self.gridLayout.addWidget(self.labelDate, 12, 0, 1, 1)
         self.textEditInfo = QtWidgets.QTextEdit(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -1106,6 +1119,24 @@ class Ui_addFormUi(object):
         self.textEditInfo.setFont(font)
         self.textEditInfo.setObjectName("textEditInfo")
         self.gridLayout.addWidget(self.textEditInfo, 17, 2, 1, 1)
+        self.checkBoxDeclaration = QtWidgets.QCheckBox(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Kartika")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.checkBoxDeclaration.setFont(font)
+        self.checkBoxDeclaration.setObjectName("checkBoxDeclaration")
+        self.gridLayout.addWidget(self.checkBoxDeclaration, 25, 0, 1, 1)
+        self.checkBoxAct = QtWidgets.QCheckBox(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Kartika")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.checkBoxAct.setFont(font)
+        self.checkBoxAct.setObjectName("checkBoxAct")
+        self.gridLayout.addWidget(self.checkBoxAct, 27, 0, 1, 1)
         self.labelStatus = QtWidgets.QLabel(self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Kartika")
@@ -1115,24 +1146,39 @@ class Ui_addFormUi(object):
         self.labelStatus.setFont(font)
         self.labelStatus.setObjectName("labelStatus")
         self.gridLayout.addWidget(self.labelStatus, 14, 0, 1, 1)
-        self.checkBoxAct = QtWidgets.QCheckBox(self.centralwidget)
+        self.dateTimeEdit = QtWidgets.QDateTimeEdit(self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Kartika")
         font.setPointSize(10)
         font.setBold(True)
         font.setWeight(75)
-        self.checkBoxAct.setFont(font)
-        self.checkBoxAct.setObjectName("checkBoxAct")
-        self.gridLayout.addWidget(self.checkBoxAct, 25, 0, 1, 1)
-        self.checkBoxDeclaration = QtWidgets.QCheckBox(self.centralwidget)
+        self.dateTimeEdit.setFont(font)
+        self.dateTimeEdit.setDateTime(QtCore.QDateTime(QtCore.QDate(2021, 1, 1), QtCore.QTime(9, 0, 0)))
+        self.dateTimeEdit.setMaximumTime(QtCore.QTime(18, 0, 0))
+        self.dateTimeEdit.setMinimumTime(QtCore.QTime(9, 0, 0))
+        self.dateTimeEdit.setCalendarPopup(True)
+        self.dateTimeEdit.setTimeSpec(QtCore.Qt.LocalTime)
+        self.dateTimeEdit.setObjectName("dateTimeEdit")
+        self.gridLayout.addWidget(self.dateTimeEdit, 24, 2, 1, 1)
+        self.lineEditSeries = QtWidgets.QLineEdit(self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Kartika")
         font.setPointSize(10)
         font.setBold(True)
         font.setWeight(75)
-        self.checkBoxDeclaration.setFont(font)
-        self.checkBoxDeclaration.setObjectName("checkBoxDeclaration")
-        self.gridLayout.addWidget(self.checkBoxDeclaration, 23, 0, 1, 1)
+        self.lineEditSeries.setFont(font)
+        self.lineEditSeries.setMaxLength(11)
+        self.lineEditSeries.setObjectName("lineEditSeries")
+        self.gridLayout.addWidget(self.lineEditSeries, 23, 2, 1, 1)
+        self.labelPassport = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Kartika")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labelPassport.setFont(font)
+        self.labelPassport.setObjectName("labelPassport")
+        self.gridLayout.addWidget(self.labelPassport, 22, 0, 2, 1)
         addFormUi.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(addFormUi)
@@ -1159,6 +1205,20 @@ class Ui_addFormUi(object):
     def retranslateUi(self, addFormUi):
         _translate = QtCore.QCoreApplication.translate
         addFormUi.setWindowTitle(_translate("addFormUi", "Заполнение данных"))
+        self.labelTelefone.setText(_translate("addFormUi", "Номер телефона"))
+        self.checkBoxConsent.setText(_translate("addFormUi", "Согласие"))
+        self.comboBoxProvideServices.setItemText(0, _translate("addFormUi", "Акт обследования"))
+        self.comboBoxProvideServices.setItemText(1, _translate("addFormUi", "Выдел"))
+        self.comboBoxProvideServices.setItemText(2, _translate("addFormUi", "Вынос"))
+        self.comboBoxProvideServices.setItemText(3, _translate("addFormUi", "Многоквартирноые дома"))
+        self.comboBoxProvideServices.setItemText(4, _translate("addFormUi", "Образование"))
+        self.comboBoxProvideServices.setItemText(5, _translate("addFormUi", "Объединение"))
+        self.comboBoxProvideServices.setItemText(6, _translate("addFormUi", "Перераспределение"))
+        self.comboBoxProvideServices.setItemText(7, _translate("addFormUi", "Раздел"))
+        self.comboBoxProvideServices.setItemText(8, _translate("addFormUi", "Технический план"))
+        self.comboBoxProvideServices.setItemText(9, _translate("addFormUi", "Уточнение/Изменение"))
+        self.labelDataWork.setText(_translate("addFormUi", "Дата съёмки"))
+        self.lineEditTelefone.setPlaceholderText(_translate("addFormUi", "89216734503"))
         self.labelService.setText(_translate("addFormUi", "Выбор предоставляемой услуги"))
         self.labelCity.setText(_translate("addFormUi", "Населенный пункт"))
         self.comboBoxStatus.setItemText(0, _translate("addFormUi", "Готова"))
@@ -1172,33 +1232,21 @@ class Ui_addFormUi(object):
         self.labelAddress.setText(_translate("addFormUi", "Адрес"))
         self.labelName.setText(_translate("addFormUi", "Имя"))
         self.pushButton.setText(_translate("addFormUi", "Добавить"))
-        self.labelSurname.setText(_translate("addFormUi", "Фамилия"))
         self.labelSnils.setText(_translate("addFormUi", "СНИЛС"))
-        self.textEditPassport.setPlaceholderText(_translate("addFormUi", "когда? серия/номер?  кем? "))
+        self.labelSurname.setText(_translate("addFormUi", "Фамилия"))
+        self.textEditPassport.setPlaceholderText(_translate("addFormUi", "Когда?Кем?"))
         self.lineEditSnils.setPlaceholderText(_translate("addFormUi", "111-111-111 11"))
-        self.comboBoxProvideServices.setItemText(0, _translate("addFormUi", "Акт обследования"))
-        self.comboBoxProvideServices.setItemText(1, _translate("addFormUi", "Выдел"))
-        self.comboBoxProvideServices.setItemText(2, _translate("addFormUi", "Вынос"))
-        self.comboBoxProvideServices.setItemText(3, _translate("addFormUi", "Многоквартирноые дома"))
-        self.comboBoxProvideServices.setItemText(4, _translate("addFormUi", "Образование"))
-        self.comboBoxProvideServices.setItemText(5, _translate("addFormUi", "Объединение"))
-        self.comboBoxProvideServices.setItemText(6, _translate("addFormUi", "Перераспределение"))
-        self.comboBoxProvideServices.setItemText(7, _translate("addFormUi", "Раздел"))
-        self.comboBoxProvideServices.setItemText(8, _translate("addFormUi", "Технический план"))
-        self.comboBoxProvideServices.setItemText(9, _translate("addFormUi", "Уточнение/Изменение"))
-        self.labelDataWork.setText(_translate("addFormUi", "Дата съёмки"))
-        self.lineEditTelefone.setPlaceholderText(_translate("addFormUi", "89216734503"))
-        self.labelPassport.setText(_translate("addFormUi", "Паспорт"))
-        self.labelTelefone.setText(_translate("addFormUi", "Номер телефона"))
-        self.checkBoxConsent.setText(_translate("addFormUi", "Согласие"))
-        self.labelDate.setText(_translate("addFormUi", "Дата записи"))
+        self.labelDate1.setText(_translate("addFormUi", "Назначить дату "))
         self.labelInfo.setText(_translate("addFormUi", "Доп. Информация"))
-        self.labelPrice.setText(_translate("addFormUi", "Стоимость"))
         self.lineEditPrice.setPlaceholderText(_translate("addFormUi", "8000"))
+        self.labelPrice.setText(_translate("addFormUi", "Стоимость"))
+        self.labelDate.setText(_translate("addFormUi", "Дата записи"))
         self.textEditInfo.setPlaceholderText(_translate("addFormUi", "Особые заметки"))
-        self.labelStatus.setText(_translate("addFormUi", "Статус"))
-        self.checkBoxAct.setText(_translate("addFormUi", "АКТ"))
         self.checkBoxDeclaration.setText(_translate("addFormUi", "Декларация"))
+        self.checkBoxAct.setText(_translate("addFormUi", "АКТ"))
+        self.labelStatus.setText(_translate("addFormUi", "Статус"))
+        self.lineEditSeries.setPlaceholderText(_translate("addFormUi", "1111 111111"))
+        self.labelPassport.setText(_translate("addFormUi", "Паспорт"))
 
 
 if __name__ == "__main__":

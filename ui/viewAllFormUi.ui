@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1319</width>
-    <height>556</height>
+    <height>553</height>
    </rect>
   </property>
   <property name="font">
@@ -26,9 +26,9 @@
 QWidget
 {
 	background-color: #a3a3a3;
-	color: #fff;
-	selection-background-color: #fff;
-	selection-color: #000;
+	color: #3a3a3d;
+	selection-background-color: #3a3a3d;
+	selection-color: #3a3a3d;
 
 }
 
@@ -80,7 +80,7 @@ QToolButton:checked
 QPushButton
 {
 	background-color: #bdbdbd;
-	color: #fff;
+	color: #3a3a3d;
 	min-width: 80px;
 	border-radius: 4px;
 	padding: 5px;
@@ -133,8 +133,8 @@ QPushButton::checked
 /*-----QLineEdit-----*/
 QLineEdit
 {
-	background-color: #lightgray;
-	color : #fff;
+	background-color: #f5f5f5;
+	color: #3a3a3d;
 	border: 1px solid #f0f0f0;
 	padding: 3px;
 	padding-left: 5px;
@@ -146,7 +146,7 @@ QLineEdit
 /*-----QPlainTExtEdit-----*/
 QPlainTextEdit
 {
-	background-color: #575757;
+	background-color: #f5f5f5;
 	color : #fff;
 	border: 1px solid #f0f0f0;
 	padding: 3px;
@@ -156,7 +156,8 @@ QPlainTextEdit
 }
 QTextEdit
 {
-	background-color: #lightgray;
+	color: #3a3a3d;
+	background-color: #f5f5f5;
 	border-radius: 4px;
 	border: 1px solid #f0f0f0;
 }
@@ -189,9 +190,9 @@ QToolBox::tab:hover
 /*-----QComboBox-----*/
 QComboBox
 {
-    background-color: #lightgray;
+    background-color: #f5f5f5;
     padding-left: 6px;
-    color: #fff;
+    color: #3a3a3d;
     height: 20px;
 	border-radius: 4px;
 	border: 1px solid #f0f0f0;
@@ -253,12 +254,19 @@ QComboBox::drop-down
 
 QDateEdit
 {
-		background-color: #lightgray;
+	    color: #3a3a3d;
+		background-color: #f5f5f5;
 		border: 1px solid #f0f0f0;
 		border-radius: 4px;
 }
-
-
+QLabel
+{
+		color: #3a3a3d;
+}
+QDateTimeEdit
+{
+		background-color: #f5f5f5;
+}
 
 /*-----QHeaderView-----*/
 QHeaderView::section
@@ -269,7 +277,10 @@ QHeaderView::section
 	padding: 4px;
 	
 }
-
+QFont
+{
+		background-color: #3a3a3d;
+}
 
 QHeaderView::section:disabled
 {
@@ -789,9 +800,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          <colorrole role="WindowText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
@@ -807,18 +818,18 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          <colorrole role="Text">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="ButtonText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
@@ -843,18 +854,18 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          <colorrole role="Highlight">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="HighlightedText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>0</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
@@ -863,9 +874,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          <colorrole role="WindowText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
@@ -881,18 +892,18 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          <colorrole role="Text">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="ButtonText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
@@ -917,18 +928,18 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          <colorrole role="Highlight">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="HighlightedText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>0</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
@@ -937,9 +948,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          <colorrole role="WindowText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
@@ -955,18 +966,18 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          <colorrole role="Text">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="ButtonText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
@@ -991,18 +1002,18 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          <colorrole role="Highlight">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="HighlightedText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>0</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
@@ -1194,9 +1205,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          <colorrole role="WindowText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
@@ -1212,18 +1223,18 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          <colorrole role="Text">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="ButtonText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
@@ -1248,18 +1259,18 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          <colorrole role="Highlight">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="HighlightedText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>0</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
@@ -1268,9 +1279,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          <colorrole role="WindowText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
@@ -1286,18 +1297,18 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          <colorrole role="Text">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="ButtonText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
@@ -1322,18 +1333,18 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          <colorrole role="Highlight">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="HighlightedText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>0</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
@@ -1396,18 +1407,18 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          <colorrole role="Highlight">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="HighlightedText">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>0</blue>
+            <red>58</red>
+            <green>58</green>
+            <blue>61</blue>
            </color>
           </brush>
          </colorrole>
