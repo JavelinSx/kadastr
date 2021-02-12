@@ -1,4 +1,5 @@
 import configparser
+import datetime
 import os
 import sys
 import urllib
@@ -118,12 +119,12 @@ class addForm(QtWidgets.QMainWindow, ui.addFormUi.Ui_addFormUi):
                          self.lineEditCity.text(), self.lineEditAddress.text(),
                          self.lineEditSurname.text(), self.lineEditName.text(), self.lineEditMiddleName.text(),
                          self.lineEditTelefone.text(),
-                         self.dateEditDate.text(), self.lineEditPrice.text(), self.textEditInfo.toPlainText(),
+                         self.lineEditPrice.text(), self.textEditInfo.toPlainText(),
                          self.comboBoxStatus.itemText(self.comboBoxStatus.currentIndex()),
                          self.comboBoxWork.itemText(self.comboBoxWork.currentIndex()),
                          self.dateEditDataWork.text(), os.path.abspath(self.getFolder()), self.dateTimeEdit.text())]
 
-                self.conn.executemany("INSERT INTO statement VALUES (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", mass)
+                self.conn.executemany("INSERT INTO statement VALUES (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", mass)
                 os.makedirs(self.getFolder())  # создание директории по заданному пути
                 self.openFolder()  # открытие созданной директории
                 if self.conn.commit():
@@ -167,36 +168,42 @@ class viewSelectForm(QtWidgets.QMainWindow, ui.viewSelectFormUi.Ui_viewSelectFor
         self.setWindowIcon(QIcon('img/edit.ico'))
 
     def dateEdit(self, date):
-
         dayD = int(date[0:2])
         mouthD = int(date[3:5])
         yearD = int(date[6:10])
-        hourD = int(date[12])
-        date = QDateTime()
         dateFill = QDate(yearD, dayD, mouthD)
+        if len(date) == 15:
+            hourD = int(date[11])
+            minutesD = int(date[13:15])
+            dateFillTime = QDateTime(yearD, mouthD, dayD, hourD, minutesD, 0, 0)
+            return dateFillTime
+        elif len(date) == 16:
+            hourD = int(date[11:13])
+            minutesD = int(date[14:16])
+            dateFillTime = QDateTime(yearD, mouthD, dayD, hourD, minutesD, 0, 0)
+            return dateFillTime
         return dateFill
 
     def fillInfo(self, mass):  # копирование и воод информации о выделенной заявке
         self.massUpdate = mass
-        print(mass)
         self.lineEditSurname.setText(mass[0][4])
         self.lineEditName.setText(mass[0][5])
         self.lineEditMiddleName.setText(mass[0][6])
         self.lineEditTelefone.setText(mass[0][7])
-        self.dateEditDate.setDate(self.dateEdit(mass[0][8]))
-        self.lineEditPrice.setText(mass[0][9])
-        self.textEditInfo.setText(mass[0][10])
-        self.comboBoxStatus.setCurrentIndex(self.comboBoxStatus.findText(mass[0][11]))
-        self.comboBoxWork.setCurrentIndex(self.comboBoxWork.findText(mass[0][12]))
-        self.dateEditDataWork.setDate(self.dateEdit(mass[0][13]))
-        self.getPathFolder = mass[0][14]
 
+        self.lineEditPrice.setText(mass[0][8])
+        self.textEditInfo.setText(mass[0][9])
+        self.comboBoxStatus.setCurrentIndex(self.comboBoxStatus.findText(mass[0][10]))
+        self.comboBoxWork.setCurrentIndex(self.comboBoxWork.findText(mass[0][11]))
+        self.dateEditDataWork.setDate(self.dateEdit(mass[0][12]))
+        self.getPathFolder = mass[0][13]
+        self.dateTimeEdit.setDateTime(self.dateEdit(mass[0][14]))
 
     def getFolder(self):  # получение полного пути до созданной директории
         provide = self.massUpdate[0][1]
         city = self.massUpdate[0][2]
         address = self.massUpdate[0][3]
-        print(provide,city,address)
+
         provide.strip(' ')
         city.strip(' ')
         address.strip(' ')
@@ -222,19 +229,17 @@ class viewSelectForm(QtWidgets.QMainWindow, ui.viewSelectFormUi.Ui_viewSelectFor
         surName = self.lineEditSurname.text()
         middleName = self.lineEditMiddleName.text()
         telefone = self.lineEditTelefone.text()
-
-        dataStart = self.dateEditDate.text()
         price = self.lineEditPrice.text()
         info = self.textEditInfo.toPlainText()
         status = self.comboBoxStatus.itemText(self.comboBoxStatus.currentIndex())
         work = self.comboBoxWork.itemText(self.comboBoxWork.currentIndex())
         dateWork = self.dateEditDataWork.text()
-
+        dateReception = self.dateTimeEdit.text()
         if buttonReply == QMessageBox.Yes:
             self.cursor.execute("UPDATE statement SET name=?,surName=?,middleName=?,telefone=?,"
-                                "dateStart=?,price=?,info=?,status=?,work=?,dateWork=? WHERE id=?",
-                                (name, surName, middleName, telefone, dataStart, price, info, status,
-                                 work, dateWork, id,))
+                                "price=?,info=?,status=?,work=?,dateWork=?,dateReception=? WHERE id=?",
+                                (name, surName, middleName, telefone, price, info, status,
+                                 work, dateWork, dateReception, id,))
             if self.conn.commit():
                 msg = QMessageBox()
                 msg.setIcon(QMessageBox.Information)
@@ -260,6 +265,7 @@ class viewAllForm(QtWidgets.QMainWindow, ui.viewAllFormUi.Ui_viewAllFormUi):
         self.pushButtonSearch.clicked.connect(self.searchInfo)
         self.pushButtonUpdate.clicked.connect(self.getAllRecord)
         self.calendarWidget.clicked.connect(self.calendarWork)
+
     def searchInfo(self):
         text = '%'+self.lineEditSearch.text()+'%'
         self.cursor.execute("select id from statement where address || surname || telefone || services || city like ?", (text,))
@@ -287,8 +293,8 @@ class viewAllForm(QtWidgets.QMainWindow, ui.viewAllFormUi.Ui_viewAllFormUi):
         if text == "Готова":
             item.setBackground(QtGui.QColor(240, 128, 0))
         if text == "Ожидание":
-            item.setBackground(QtGui.QColor(134, 250, 45))
-        if text == "В разработке":
+            item.setBackground(QtGui.QColor(240, 128, 0))
+        if text == "Разработка":
             item.setBackground(QtGui.QColor(236, 240, 0))
         if text == "Ожидает выезд":
             item.setBackground(QtGui.QColor(240, 128, 0))
@@ -299,16 +305,15 @@ class viewAllForm(QtWidgets.QMainWindow, ui.viewAllFormUi.Ui_viewAllFormUi):
 
     def fillRecord(self, records):
         self.tableWidget.setRowCount(len(records))
-        self.tableWidget.hideColumn(10)
+        self.tableWidget.hideColumn(9)
         for i in range(len(records)):
-            for j in range(6):
                 item = QTableWidgetItem()
-                self.colorItem(item, records[i][11])
-                item.setText(str(records[i][11]))  # статус
+                self.colorItem(item, records[i][10])
+                item.setText(str(records[i][10]))  # статус
                 self.tableWidget.setItem(i, 0, item)
                 item = QTableWidgetItem()
-                self.colorItem(item, records[i][12])
-                item.setText(str(records[i][12]))  # съёмка
+                self.colorItem(item, records[i][11])
+                item.setText(str(records[i][11]))  # съёмка
                 self.tableWidget.setItem(i, 1, item)
                 item = QTableWidgetItem()
                 item.setText(str(records[i][2]))  # нас.пункт
@@ -329,14 +334,11 @@ class viewAllForm(QtWidgets.QMainWindow, ui.viewAllFormUi.Ui_viewAllFormUi):
                 item.setText(str(records[i][7]))  # ном.телефона
                 self.tableWidget.setItem(i, 7, item)
                 item = QTableWidgetItem()
-                item.setText(str(records[i][8]))  # дата записи
+                item.setText(str(records[i][1]))  # услуга
                 self.tableWidget.setItem(i, 8, item)
                 item = QTableWidgetItem()
-                item.setText(str(records[i][1]))  # услуга
-                self.tableWidget.setItem(i, 9, item)
-                item = QTableWidgetItem()
                 item.setText(str(records[i][0]))  # id
-                self.tableWidget.setItem(i, 10, item)
+                self.tableWidget.setItem(i, 9, item)
 
     def getAllRecord(self):
         self.cursor.execute("SELECT * from statement")
@@ -346,7 +348,7 @@ class viewAllForm(QtWidgets.QMainWindow, ui.viewAllFormUi.Ui_viewAllFormUi):
     def openFullInfo(self):
 
         currentRowSelect = self.tableWidget.currentRow()
-        getNumber = self.tableWidget.item(currentRowSelect, 10).text()
+        getNumber = self.tableWidget.item(currentRowSelect, 9).text()
 
         self.cursor.execute("SELECT * from statement where id = ?", (getNumber,))
         mass = self.cursor.fetchall()
@@ -357,49 +359,38 @@ class viewAllForm(QtWidgets.QMainWindow, ui.viewAllFormUi.Ui_viewAllFormUi):
 
     def calendarWork(self):
         dateSelect = self.calendarWidget.selectedDate().toString("dd.MM.yyyy")
-        self.cursor.execute("select dateStart from statement")
-        dateStart = self.cursor.fetchall()
-        date = QDate()
+        self.cursor.execute("select dateReception from statement")
+        dateReception = self.cursor.fetchall()
+        dateBuild = QDate()
         color = QColor()
         brush = QBrush()
         form = QTextCharFormat()
-
-        for month in dateStart:
-            if str(month[0])[3:10] == dateSelect[3:10]:
-                self.cursor.execute("select * from statement where dateStart = ?", month)
+        counter = 0
+        fillmass = []
+        for date in dateReception:
+            if str(date[0])[3:10] == dateSelect[3:10]:
+                self.cursor.execute("select * from statement where dateReception = ?", date)
                 result = self.cursor.fetchall()
-                for status in result:
-                    if status[14] == 'Готова':
-                        color.setRgb(134, 250, 45)
-                        break
-                    elif status[14] == 'В обработке':
-                        color.setRgb(236, 240, 0)
-                        break
-                    elif status[14] == 'Ожидает выезд':
-                        color.setRgb(240, 128, 0)
-                        break
-                year = str(month[0])[6:10]
-                mnt = str(month[0])[3:5]
-                day = str(month[0])[0:2]
-                date.setDate(int(year),int(mnt),int(day))
+                counter = counter + 1
+                if result[0][11] != "Готова":
+                    color.setRgb(220-counter*5, 255, 170-counter*5)
+                year = str(date[0])[6:10]
+                mnt = str(date[0])[3:5]
+                day = str(date[0])[0:2]
+                dateBuild.setDate(int(year), int(mnt), int(day))
                 brush.setColor(color)
                 form.setBackground(brush)
-                self.calendarWidget.setDateTextFormat(date,form)
+                self.calendarWidget.setDateTextFormat(dateBuild, form)
+        self.cursor.execute("select * from statement")
+        allInfo = self.cursor.fetchall()
+        for i in range(len(dateReception)):
+            if str(allInfo[i][14])[0:10] == dateSelect[0:10]:
+                fillmass.append(allInfo[i])
+        self.fillRecord(fillmass)
 
 
-class checkAndUpdate():
 
-    url = 'https://github.com/JavelinSx/kadastr'
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
-    response = requests.get(url, headers=headers)
-    #soup = BeautifulSoup(response.text, 'html.parser')
-    #print(soup)
-    #timeUpdate = soup.find('relative-time', class_='no-wrap')
-    #print(timeUpdate)
-    #dateText = timeUpdate.text
-    #print(time.strftime("%b%m%Y"))
-    #print(dateText)
+
 
 
 

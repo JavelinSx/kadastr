@@ -1101,11 +1101,6 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
       </column>
       <column>
        <property name="text">
-        <string>Дата записи</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
         <string>Услуга</string>
        </property>
       </column>
