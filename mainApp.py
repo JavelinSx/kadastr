@@ -112,6 +112,8 @@ class addForm(QtWidgets.QMainWindow, ui.addFormUi.Ui_addFormUi):
 
     def insertInfo(self):  # добавление информации в БД
         try:
+            completerInfo = completerAdd.addData(self)
+            print(completerInfo)
             buttonReply = QMessageBox.question(self, 'Подтверждение действия', "Добавить запись?",
                                                QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
             if buttonReply == QMessageBox.Yes:
@@ -190,7 +192,6 @@ class viewSelectForm(QtWidgets.QMainWindow, ui.viewSelectFormUi.Ui_viewSelectFor
         self.lineEditName.setText(mass[0][5])
         self.lineEditMiddleName.setText(mass[0][6])
         self.lineEditTelefone.setText(mass[0][7])
-
         self.lineEditPrice.setText(mass[0][8])
         self.textEditInfo.setText(mass[0][9])
         self.comboBoxStatus.setCurrentIndex(self.comboBoxStatus.findText(mass[0][10]))
@@ -389,9 +390,16 @@ class viewAllForm(QtWidgets.QMainWindow, ui.viewAllFormUi.Ui_viewAllFormUi):
         self.fillRecord(fillmass)
 
 
-
-
-
+class completerAdd():
+    def __init__(self):
+        config = configparser.ConfigParser()
+        config.read('data/settings.ini')
+        self.conn = sqlite3.connect(config.get(configparser.DEFAULTSECT, 'pathDb'))
+        self.cursor = self.conn.cursor()
+    def addData(self):
+        self.cursor.execute("select * from completer_data")
+        completerData = self.cursor.fetchall()
+        print(completerData)
 
 
 def main():
