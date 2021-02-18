@@ -26,11 +26,13 @@ class Ui_viewAllFormUi(object):
 "{\n"
 "    background-color: #a3a3a3;\n"
 "    color: #3a3a3d;\n"
-"    selection-background-color: #3a3a3d;\n"
-"    selection-color: #3a3a3d;\n"
 "\n"
 "}\n"
 "\n"
+"QTableWidget\n"
+"{\n"
+"    selection-background-color: #f0f0f0\n"
+"}\n"
 "\n"
 "/*-----QLabel-----*/\n"
 "QLabel\n"
@@ -805,7 +807,7 @@ class Ui_viewAllFormUi(object):
         brush = QtGui.QBrush(QtGui.QColor(163, 163, 163))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
+        brush = QtGui.QBrush(QtGui.QColor(240, 240, 240))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Highlight, brush)
         brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
@@ -829,7 +831,7 @@ class Ui_viewAllFormUi(object):
         brush = QtGui.QBrush(QtGui.QColor(163, 163, 163))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
+        brush = QtGui.QBrush(QtGui.QColor(240, 240, 240))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Highlight, brush)
         brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
@@ -853,7 +855,7 @@ class Ui_viewAllFormUi(object):
         brush = QtGui.QBrush(QtGui.QColor(163, 163, 163))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
+        brush = QtGui.QBrush(QtGui.QColor(240, 240, 240))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Highlight, brush)
         brush = QtGui.QBrush(QtGui.QColor(58, 58, 61))
@@ -893,13 +895,17 @@ class Ui_viewAllFormUi(object):
         self.tableWidget.setHorizontalHeaderItem(8, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(9, item)
+        self.tableWidget.horizontalHeader().setCascadingSectionResizes(True)
         self.tableWidget.horizontalHeader().setDefaultSectionSize(130)
         self.tableWidget.horizontalHeader().setHighlightSections(True)
-        self.tableWidget.horizontalHeader().setMinimumSectionSize(50)
+        self.tableWidget.horizontalHeader().setMinimumSectionSize(15)
         self.tableWidget.horizontalHeader().setSortIndicatorShown(True)
         self.tableWidget.horizontalHeader().setStretchLastSection(True)
-        self.tableWidget.verticalHeader().setVisible(False)
-        self.tableWidget.verticalHeader().setSortIndicatorShown(False)
+        self.tableWidget.verticalHeader().setVisible(True)
+        self.tableWidget.verticalHeader().setCascadingSectionResizes(True)
+        self.tableWidget.verticalHeader().setDefaultSectionSize(30)
+        self.tableWidget.verticalHeader().setMinimumSectionSize(15)
+        self.tableWidget.verticalHeader().setSortIndicatorShown(True)
         self.tableWidget.verticalHeader().setStretchLastSection(False)
         self.gridLayout.addWidget(self.tableWidget, 9, 1, 4, 2)
         self.pushButtonDelete = QtWidgets.QPushButton(self.centralwidget)

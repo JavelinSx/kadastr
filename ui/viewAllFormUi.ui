@@ -27,11 +27,13 @@ QWidget
 {
 	background-color: #a3a3a3;
 	color: #3a3a3d;
-	selection-background-color: #3a3a3d;
-	selection-color: #3a3a3d;
 
 }
 
+QTableWidget
+{
+	selection-background-color: #f0f0f0
+}
 
 /*-----QLabel-----*/
 QLabel
@@ -854,9 +856,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          <colorrole role="Highlight">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>58</red>
-            <green>58</green>
-            <blue>61</blue>
+            <red>240</red>
+            <green>240</green>
+            <blue>240</blue>
            </color>
           </brush>
          </colorrole>
@@ -928,9 +930,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          <colorrole role="Highlight">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>58</red>
-            <green>58</green>
-            <blue>61</blue>
+            <red>240</red>
+            <green>240</green>
+            <blue>240</blue>
            </color>
           </brush>
          </colorrole>
@@ -1002,9 +1004,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          <colorrole role="Highlight">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>58</red>
-            <green>58</green>
-            <blue>61</blue>
+            <red>240</red>
+            <green>240</green>
+            <blue>240</blue>
            </color>
           </brush>
          </colorrole>
@@ -1030,6 +1032,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
         <strikeout>false</strikeout>
        </font>
       </property>
+      <attribute name="horizontalHeaderCascadingSectionResizes">
+       <bool>true</bool>
+      </attribute>
       <attribute name="horizontalHeaderDefaultSectionSize">
        <number>130</number>
       </attribute>
@@ -1037,7 +1042,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
        <bool>true</bool>
       </attribute>
       <attribute name="horizontalHeaderMinimumSectionSize">
-       <number>50</number>
+       <number>15</number>
       </attribute>
       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
        <bool>true</bool>
@@ -1046,10 +1051,19 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
        <bool>true</bool>
       </attribute>
       <attribute name="verticalHeaderVisible">
-       <bool>false</bool>
+       <bool>true</bool>
+      </attribute>
+      <attribute name="verticalHeaderCascadingSectionResizes">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>30</number>
+      </attribute>
+      <attribute name="verticalHeaderMinimumSectionSize">
+       <number>15</number>
       </attribute>
       <attribute name="verticalHeaderShowSortIndicator" stdset="0">
-       <bool>false</bool>
+       <bool>true</bool>
       </attribute>
       <attribute name="verticalHeaderStretchLastSection">
        <bool>false</bool>

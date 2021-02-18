@@ -100,6 +100,7 @@ class addForm(QtWidgets.QMainWindow, ui.addFormUi.Ui_addFormUi):
         return os.path.abspath(fullPathToDir)
 
     def AllClear(self):
+        self.lineEditCity.clear()
         self.lineEditAddress.clear()
         self.lineEditSurname.clear()
         self.lineEditName.clear()
@@ -112,21 +113,32 @@ class addForm(QtWidgets.QMainWindow, ui.addFormUi.Ui_addFormUi):
 
     def insertInfo(self):  # добавление информации в БД
         try:
-            completerInfo = completerAdd.addData(self)
-            print(completerInfo)
+
             buttonReply = QMessageBox.question(self, 'Подтверждение действия', "Добавить запись?",
                                                QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
             if buttonReply == QMessageBox.Yes:
+                city = self.lineEditCity.text()
+                address = self.lineEditAddress.text()
+
+
                 mass = [(self.comboBoxProvideServices.itemText(self.comboBoxProvideServices.currentIndex()),
-                         self.lineEditCity.text(), self.lineEditAddress.text(),
-                         self.lineEditSurname.text(), self.lineEditName.text(), self.lineEditMiddleName.text(),
+                         self.lineEditCity.text(),
+                         self.lineEditAddress.text(),
+                         self.lineEditSurname.text(),
+                         self.lineEditName.text(),
+                         self.lineEditMiddleName.text(),
                          self.lineEditTelefone.text(),
-                         self.lineEditPrice.text(), self.textEditInfo.toPlainText(),
+                         self.lineEditPrice.text(),
+                         self.textEditInfo.toPlainText(),
                          self.comboBoxStatus.itemText(self.comboBoxStatus.currentIndex()),
                          self.comboBoxWork.itemText(self.comboBoxWork.currentIndex()),
-                         self.dateEditDataWork.text(), os.path.abspath(self.getFolder()), self.dateTimeEdit.text())]
+                         self.dateEditDataWork.text(),
+                         os.path.abspath(self.getFolder()),
+                         self.dateTimeEdit.date().toString("dd.MM.yyyy"),
+                         self.dateTimeEdit.time().toString("HH:mm"))]
 
-                self.conn.executemany("INSERT INTO statement VALUES (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", mass)
+                self.conn.executemany("INSERT INTO statement VALUES (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", mass)
+
                 os.makedirs(self.getFolder())  # создание директории по заданному пути
                 self.openFolder()  # открытие созданной директории
                 if self.conn.commit():
@@ -136,10 +148,15 @@ class addForm(QtWidgets.QMainWindow, ui.addFormUi.Ui_addFormUi):
                     msg.setText("Данные успешно добавлены")
                     msg.addButton('Ok', QMessageBox.AcceptRole)
                     msg.exec()
-                self.AllClear()  # очистка всех полей
+                    self.AllClear()  # очистка всех полей
+                self.cursor.execute("insert into completer_data(completerCity,completerAddress) values(?,?)",
+                                        (city, address,))
+                self.conn.commit()
         except FileExistsError as text:
             QMessageBox.critical(self, "Ошибка ", str(text), QMessageBox.Ok)
             self.conn.rollback()
+        except sqlite3.IntegrityError:
+                pass
 
     def openFolder(self):  # открыть директорию, указанную в БД
         try:
@@ -169,24 +186,20 @@ class viewSelectForm(QtWidgets.QMainWindow, ui.viewSelectFormUi.Ui_viewSelectFor
     def initUi(self):
         self.setWindowIcon(QIcon('img/edit.ico'))
 
-    def dateEdit(self, date):
-        dayD = int(date[0:2])
-        mouthD = int(date[3:5])
-        yearD = int(date[6:10])
-        dateFill = QDate(yearD, dayD, mouthD)
-        if len(date) == 15:
-            hourD = int(date[11])
-            minutesD = int(date[13:15])
-            dateFillTime = QDateTime(yearD, mouthD, dayD, hourD, minutesD, 0, 0)
-            return dateFillTime
-        elif len(date) == 16:
-            hourD = int(date[11:13])
-            minutesD = int(date[14:16])
-            dateFillTime = QDateTime(yearD, mouthD, dayD, hourD, minutesD, 0, 0)
-            return dateFillTime
-        return dateFill
 
     def fillInfo(self, mass):  # копирование и воод информации о выделенной заявке
+        dayW = int(mass[0][12][0:2])
+        mouthW = int(mass[0][12][3:5])
+        yearW = int(mass[0][12][6:10])
+        dayR = int(mass[0][14][0:2])
+        mouthR = int(mass[0][14][3:5])
+        yearR = int(mass[0][14][6:10])
+        timeHour = int(mass[0][15][0:len(mass[0][15]) - 3])
+        timeMinutes = int(mass[0][15][len(mass[0][15]) - 2:len(mass[0][15])])
+        dateFillWork = QDate(yearW, mouthW, dayW)
+        dateFillReception = QDateTime(yearR, mouthR, dayR, timeHour, timeMinutes)
+
+
         self.massUpdate = mass
         self.lineEditSurname.setText(mass[0][4])
         self.lineEditName.setText(mass[0][5])
@@ -196,9 +209,10 @@ class viewSelectForm(QtWidgets.QMainWindow, ui.viewSelectFormUi.Ui_viewSelectFor
         self.textEditInfo.setText(mass[0][9])
         self.comboBoxStatus.setCurrentIndex(self.comboBoxStatus.findText(mass[0][10]))
         self.comboBoxWork.setCurrentIndex(self.comboBoxWork.findText(mass[0][11]))
-        self.dateEditDataWork.setDate(self.dateEdit(mass[0][12]))
+        self.dateEditDataWork.setDate(dateFillWork)
         self.getPathFolder = mass[0][13]
-        self.dateTimeEdit.setDateTime(self.dateEdit(mass[0][14]))
+        self.dateTimeEdit.setDateTime(dateFillReception)
+
 
     def getFolder(self):  # получение полного пути до созданной директории
         provide = self.massUpdate[0][1]
@@ -282,7 +296,7 @@ class viewAllForm(QtWidgets.QMainWindow, ui.viewAllFormUi.Ui_viewAllFormUi):
 
     def deleteRecord(self):
         currentRowSelect = self.tableWidget.currentRow()
-        getNumber = self.tableWidget.item(currentRowSelect, 10).text()
+        getNumber = self.tableWidget.item(currentRowSelect, 9).text()
         buttonReply = QMessageBox.question(self, 'Подтверждение действия', "Удалить выбранную запись?",
                                            QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if buttonReply == QMessageBox.Yes:
@@ -374,7 +388,7 @@ class viewAllForm(QtWidgets.QMainWindow, ui.viewAllFormUi.Ui_viewAllFormUi):
                 result = self.cursor.fetchall()
                 counter = counter + 1
                 if result[0][11] != "Готова":
-                    color.setRgb(220-counter*5, 255, 170-counter*5)
+                    color.setRgb(220, 255, 170)
                 year = str(date[0])[6:10]
                 mnt = str(date[0])[3:5]
                 day = str(date[0])[0:2]
@@ -382,6 +396,7 @@ class viewAllForm(QtWidgets.QMainWindow, ui.viewAllFormUi.Ui_viewAllFormUi):
                 brush.setColor(color)
                 form.setBackground(brush)
                 self.calendarWidget.setDateTextFormat(dateBuild, form)
+
         self.cursor.execute("select * from statement")
         allInfo = self.cursor.fetchall()
         for i in range(len(dateReception)):
@@ -389,17 +404,6 @@ class viewAllForm(QtWidgets.QMainWindow, ui.viewAllFormUi.Ui_viewAllFormUi):
                 fillmass.append(allInfo[i])
         self.fillRecord(fillmass)
 
-
-class completerAdd():
-    def __init__(self):
-        config = configparser.ConfigParser()
-        config.read('data/settings.ini')
-        self.conn = sqlite3.connect(config.get(configparser.DEFAULTSECT, 'pathDb'))
-        self.cursor = self.conn.cursor()
-    def addData(self):
-        self.cursor.execute("select * from completer_data")
-        completerData = self.cursor.fetchall()
-        print(completerData)
 
 
 def main():
