@@ -11,8 +11,6 @@ from PyQt5.QtCore import QDate, QDir, QDateTime
 from PyQt5.QtGui import QIcon, QColor, QBrush, QTextCharFormat
 from PyQt5.QtWidgets import QFileDialog, QTableWidgetItem, QMessageBox, QDesktopWidget
 
-import requests
-from bs4 import BeautifulSoup
 
 import ui.viewAllFormUi
 import ui.startWindowUi
@@ -283,11 +281,23 @@ class viewAllForm(QtWidgets.QMainWindow, ui.viewAllFormUi.Ui_viewAllFormUi):
 
     def searchInfo(self):
         text = '%'+self.lineEditSearch.text()+'%'
+        text = text.title()
         self.cursor.execute("select id from statement where address || surname || telefone || services || city like ?", (text,))
         result = self.cursor.fetchall()
-        self.cursor.execute("select * from statement where id = ?", result[0])
-        records = self.cursor.fetchall()
-        self.fillRecord(records)
+        mass = []
+        if len(result) != 0:
+            for res in result:
+                self.cursor.execute("select * from statement where id = ?", res)
+                records = self.cursor.fetchall()
+                mass = mass+records
+            self.fillRecord(mass)
+        else:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+            msg.setWindowTitle("Информация")
+            msg.setText("Данные не найдены")
+            msg.addButton('Ok', QMessageBox.AcceptRole)
+            msg.exec()
 
     def initUi(self):
         self.setWindowIcon(QIcon('img/BD.ico'))
