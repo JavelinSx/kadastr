@@ -1,13 +1,12 @@
 import configparser
-import datetime
 import os
 import sys
-import urllib
+
 
 from PyQt5 import QtWidgets, QtGui, QtCore
 import sqlite3
 
-from PyQt5.QtCore import QDate, QDir, QDateTime
+from PyQt5.QtCore import QDate, QDateTime
 from PyQt5.QtGui import QIcon, QColor, QBrush, QTextCharFormat
 from PyQt5.QtWidgets import QFileDialog, QTableWidgetItem, QMessageBox, QDesktopWidget
 
@@ -17,7 +16,7 @@ import ui.startWindowUi
 import ui.addFormUi
 import ui.viewSelectFormUi
 import ctypes
-import time
+
 
 class startWindow(QtWidgets.QMainWindow, ui.startWindowUi.Ui_startWindowUi):
     def __init__(self, parent=None):
