@@ -1002,7 +1002,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.lineEditTelefone.setFont(font)
-        self.lineEditTelefone.setMaxLength(11)
+        self.lineEditTelefone.setMaxLength(14)
         self.lineEditTelefone.setObjectName("lineEditTelefone")
         self.gridLayout_3.addWidget(self.lineEditTelefone, 7, 1, 1, 2)
         self.lineEditMiddleName = QtWidgets.QLineEdit(self.addPage)
@@ -1347,7 +1347,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.pushButtonUpdate, self.lineEditSearch)
         MainWindow.setTabOrder(self.lineEditSearch, self.pushButtonSearch)
@@ -1367,7 +1367,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "База Данных"))
         self.pushButtonUpdate.setText(_translate("MainWindow", "Обновить базу"))
         self.pushButtonSearch.setText(_translate("MainWindow", "Поиск"))
         self.pushButtonDelete.setText(_translate("MainWindow", "Удалить запись"))

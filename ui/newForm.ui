@@ -567,7 +567,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
        </font>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="basePage">
        <attribute name="title">
@@ -1606,7 +1606,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
            </font>
           </property>
           <property name="maxLength">
-           <number>11</number>
+           <number>14</number>
           </property>
           <property name="placeholderText">
            <string>89216734503</string>

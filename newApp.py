@@ -5,8 +5,8 @@ import sys
 from PyQt5 import QtWidgets, QtGui, QtCore
 import sqlite3
 
-from PyQt5.QtCore import QDate, QDateTime, QEvent
-from PyQt5.QtGui import QIcon, QColor, QBrush, QTextCharFormat
+from PyQt5.QtCore import QDate, QDateTime, QRegExp
+from PyQt5.QtGui import  QColor, QBrush, QTextCharFormat, QRegExpValidator
 from PyQt5.QtWidgets import QFileDialog, QTableWidgetItem, QMessageBox, QDesktopWidget, QCompleter
 
 import ui.newForm
@@ -21,6 +21,12 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
         qr = self.frameGeometry()
         cp = QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
+        self.regExpPhone = QRegExp('^\d\d\d\d\d\d\d\d\d\d\d$')
+        self.regExpPrice = QRegExp('^\d\d\d\d\d$')
+        self.intValidatorPhone = QRegExpValidator(self.regExpPhone, self.lineEditTelefone)
+        self.intValidatorPrice = QRegExpValidator(self.regExpPrice, self.lineEditPrice)
+        self.lineEditTelefone.setValidator(self.intValidatorPhone)
+        self.lineEditPrice.setValidator(self.intValidatorPrice)
         self.city = []
         self.address = []
         self.search = []
