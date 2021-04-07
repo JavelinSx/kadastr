@@ -35,6 +35,9 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
         self.conn = sqlite3.connect(self.createConfig()[0])
         self.cursor = self.conn.cursor()
 
+        self.currentDate = QDate.currentDate().toString("MM.yyyy")
+        self.calendarWidget.setCurrentPage(int(self.currentDate[3:7]), int(self.currentDate[0:2]))
+
         self.pushButtonUpdateGui.clicked.connect(self.updateGui)
         self.pushButtonChangePath.clicked.connect(self.changePath)
         self.pushButton.clicked.connect(self.insertInfo)
@@ -141,7 +144,7 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
             if buttonReply == QMessageBox.Yes:
                 city = self.lineEditCity.text().title()
                 address = self.lineEditAddress.text().title()
-
+                print(self.dateTimeEdit.date().toString("dd.MM.yyyy"))
                 mass = [(self.comboBoxProvideServices.itemText(self.comboBoxProvideServices.currentIndex()),
                          self.lineEditCity.text().title(),
                          self.lineEditAddress.text().title(),
@@ -156,9 +159,10 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
                          self.dateEditDataWork.text(),
                          os.path.abspath(self.getFolder()),
                          self.dateTimeEdit.date().toString("dd.MM.yyyy"),
-                         self.dateTimeEdit.time().toString("HH:mm"))]
-
-                self.conn.executemany("INSERT INTO statement VALUES (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", mass)
+                         self.dateTimeEdit.time().toString("HH:mm"),
+                         self.dateEditDataWork.text())]
+                self.allClear()
+                self.conn.executemany("INSERT INTO statement VALUES (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", mass)
 
                 os.makedirs(self.getFolder())  # создание директории по заданному пути
 
@@ -255,18 +259,27 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
         self.cursor.execute("select dateReception from statement")
         dateReception = self.cursor.fetchall()
         dateBuild = QDate()
+        dateNow = QDate().currentDate()
+        print(dateNow)
         color = QColor()
         brush = QBrush()
         form = QTextCharFormat()
         counter = 0
         fillmass = []
+        self.cursor.execute("select dateNew from statement")
+        dateNew = self.cursor.fetchall()
+        for dateRecord in dateNew:
+            pass
         for date in dateReception:
+            print(str(date[0])[3:10])
+            print(dateSelect[3:10])
             if str(date[0])[3:10] == dateSelect[3:10]:
+
                 self.cursor.execute("select * from statement where dateReception = ?", date)
                 result = self.cursor.fetchall()
                 counter = counter + 1
                 if result[0][11] != "Готова":
-                    color.setRgb(220, 255, 170)
+                    color.setRgb(255, 112, 41)
                 year = str(date[0])[6:10]
                 mnt = str(date[0])[3:5]
                 day = str(date[0])[0:2]
@@ -312,7 +325,9 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
         self.lineEditCity.hide()
         self.lineEditAddress.hide()
         self.pushButton.hide()
+        self.labelDateNew.hide()
         self.label.show()
+        self.dateEditNew.hide()
         self.pushButtonChangePath.show()
         self.pushButtonOpenFolder.show()
         self.lineEditPath.show()
@@ -392,6 +407,8 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
         self.lineEditAddress.show()
         self.pushButton.show()
         self.label.hide()
+        self.labelDateNew.show()
+        self.dateEditNew.show()
         self.pushButtonChangePath.hide()
         self.pushButtonOpenFolder.hide()
         self.lineEditPath.hide()
