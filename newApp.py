@@ -385,6 +385,7 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
                                     "price=?,info=?,status=?,work=?,dateWork=?,dateReception=?, pathToDir=? WHERE id=?",
                                     (name, surName, middleName, telefone, price, info, status,
                                      work, dateWork, dateReception, pathToDir, id,))
+                self.conn.commit()
                 self.allClear()
                 self.updateGui()
                 msg = QMessageBox()
