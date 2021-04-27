@@ -1,1 +1,1 @@
-pyinstaller.exe --icon=main.ico -F --noconsole newApp.py
+pyinstaller.exe --icon=main.ico --noconsole newApp.py

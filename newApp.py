@@ -1,16 +1,15 @@
 import configparser
+import ctypes
 import os
+import sqlite3
 import sys
 
 from PyQt5 import QtWidgets, QtGui, QtCore
-import sqlite3
-
 from PyQt5.QtCore import QDate, QDateTime, QRegExp
-from PyQt5.QtGui import  QColor, QBrush, QTextCharFormat, QRegExpValidator
+from PyQt5.QtGui import QColor, QBrush, QTextCharFormat, QRegExpValidator, QIcon
 from PyQt5.QtWidgets import QFileDialog, QTableWidgetItem, QMessageBox, QDesktopWidget, QCompleter
 
 import ui.newForm
-import ctypes
 
 
 class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
@@ -21,43 +20,82 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
         qr = self.frameGeometry()
         cp = QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
+
         self.regExpPhone = QRegExp('^\d\d\d\d\d\d\d\d\d\d\d$')
         self.regExpPrice = QRegExp('^\d\d\d\d\d$')
+
+        self.setWindowIcon(QIcon('img/main.png'))
+
         self.intValidatorPhone = QRegExpValidator(self.regExpPhone, self.lineEditTelefone)
         self.intValidatorPrice = QRegExpValidator(self.regExpPrice, self.lineEditPrice)
         self.lineEditTelefone.setValidator(self.intValidatorPhone)
         self.lineEditPrice.setValidator(self.intValidatorPrice)
+
         self.city = []
         self.address = []
         self.search = []
+        self.massForCalendar = []
         self.move(qr.topLeft())
-        self.createConfig()
-        self.conn = sqlite3.connect(self.createConfig()[0])
+        self.checkFolder()
+        self.conn = sqlite3.connect('//lena/c/Users/LenaPC/Documents/GitHub/DataBase dont delete/kadastr.db')
         self.cursor = self.conn.cursor()
 
-        self.currentDate = QDate.currentDate().toString("MM.yyyy")
-        self.calendarWidget.setCurrentPage(int(self.currentDate[3:7]), int(self.currentDate[0:2]))
+        self.getInfoForCompleter()
 
+        self.tableWidget.setSortingEnabled(True)
+        self.currentDate = QDate.currentDate().toString("dd.MM.yyyy")
+
+
+        self.currentDateForCombo = QDate.currentDate()
+        self.dateTimeEdit.setDate(self.currentDateForCombo)
+        self.dateEditDataWork.setDate(self.currentDateForCombo)
+        self.dateEditNew.setDate(self.currentDateForCombo)
         self.pushButtonUpdateGui.clicked.connect(self.updateGui)
         self.pushButtonChangePath.clicked.connect(self.changePath)
         self.pushButton.clicked.connect(self.insertInfo)
         self.pushButtonOpenFolder.clicked.connect(self.openFolder)
         self.pushButtonEdit.clicked.connect(self.updateInfo)
 
-        self.calendarWork()
         self.tableWidget.itemDoubleClicked.connect(self.openFullInfo)
         self.pushButtonDelete.clicked.connect(self.deleteRecord)
         self.pushButtonSearch.clicked.connect(self.searchInfo)
         self.pushButtonUpdate.clicked.connect(lambda: self.fillRecord(self.getAllRecord()))
+
         self.calendarWidget.clicked.connect(self.calendarWork)
         self.massUpdate = ()
-        self.completerSearchList = QCompleter(self.search,self.lineEditSearch)
+        self.completerSearchList = QCompleter(self.search, self.lineEditSearch)
         self.completerAddressList = QCompleter(self.address, self.lineEditAddress)
         self.completerCityList = QCompleter(self.city, self.lineEditCity)
         self.lineEditSearch.setCompleter(self.completerSearchList)
         self.lineEditCity.setCompleter(self.completerCityList)
         self.lineEditAddress.setCompleter(self.completerAddressList)
+
+        self.pushButtonDebts.clicked.connect(self.getInfoDebts)
+
         self.updateGui()
+
+        self.tableWidget.itemClicked.connect(self.setCurrentDateCalendar)
+
+
+
+    def setCurrentDateCalendar(self):
+        dateBuild = QDate()
+        row = self.tableWidget.currentRow()
+        id = int(self.tableWidget.item(row, 9).text())
+        date = ""
+
+        for item in self.massForCalendar:
+            if item[0] == id:
+                date = item[12]
+
+        year = int(date[6:10])
+        mnt = int(date[3:5])
+        day = int(date[0:2])
+        dateBuild.setDate(year, mnt, day)
+
+
+        self.calendarWidget.setCurrentPage(year, mnt)
+        self.calendarWidget.setSelectedDate(dateBuild)
 
     def changePath(self):
         pathFolder = QFileDialog.getExistingDirectory(self, "Выбрите директорию", self.lineEditPath.text(),
@@ -100,6 +138,9 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
         buttonReply = QMessageBox.question(self, 'Подтверждение действия', "Удалить выбранную запись?",
                                            QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if buttonReply == QMessageBox.Yes:
+            self.cursor.execute("select pathToDir from statement where id=?", (getNumber,))
+            result = self.cursor.fetchone()
+            os.rmdir(result[0])
             self.cursor.execute("DELETE FROM statement WHERE id=?", (getNumber,))
             self.conn.commit()
             self.fillRecord(self.getAllRecord())
@@ -107,10 +148,8 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
     def colorItem(self, item, text):
         if text == "Готова":
             item.setBackground(QtGui.QColor(240, 128, 0))
-        if text == "Ожидание":
-            item.setBackground(QtGui.QColor(240, 128, 0))
         if text == "Разработка":
-            item.setBackground(QtGui.QColor(236, 240, 0))
+            item.setBackground(QtGui.QColor(240, 128, 0))
         if text == "Ожидает выезд":
             item.setBackground(QtGui.QColor(240, 128, 0))
         if text == "В обработке":
@@ -118,12 +157,19 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
         if text == "Готова":
             item.setBackground(QtGui.QColor(134, 250, 45))
 
-    def getFolder(self):  # получение полного пути до созданной директории
-        provide = self.comboBoxProvideServices.itemText(self.comboBoxProvideServices.currentIndex())
-        city = self.lineEditCity.text()
-        address = self.lineEditAddress.text()
-        fullPathToDir = os.path.join(self.createConfig()[1], provide, city, address)
-        return os.path.abspath(fullPathToDir)
+    def checkFolder(self):
+
+        pathFolder = "//lena/межевание/МЕЖЕВАНИЕ"
+
+        if os.path.isdir(pathFolder):
+            os.chdir(pathFolder)
+        else:
+            self.directory = QtWidgets.QFileDialog.getExistingDirectory(self, "Выберите дерикторию")
+            if self.directory:  # не продолжать выполнение, если пользователь не выбрал директорию
+                QMessageBox.critical(self, "Ошибка ", "ВЫберите основную деректорию", QMessageBox.Ok)
+        for item in range(self.comboBoxProvideServices.count()):
+            if not os.path.isdir(os.path.join(pathFolder, self.comboBoxProvideServices.itemText(item))):
+                os.makedirs(os.path.join(pathFolder, self.comboBoxProvideServices.itemText(item)))
 
     def allClear(self):
         self.lineEditCity.clear()
@@ -138,13 +184,15 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
 
     def insertInfo(self):  # добавление информации в БД
         try:
-
+            path = os.path.join(os.getcwd(),
+                                self.comboBoxProvideServices.itemText(self.comboBoxProvideServices.currentIndex()),
+                                self.lineEditCity.text(),
+                                self.lineEditAddress.text() + " " + self.lineEditSurname.text())
             buttonReply = QMessageBox.question(self, 'Подтверждение действия', "Добавить запись?",
                                                QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
             if buttonReply == QMessageBox.Yes:
                 city = self.lineEditCity.text().title()
                 address = self.lineEditAddress.text().title()
-                print(self.dateTimeEdit.date().toString("dd.MM.yyyy"))
                 mass = [(self.comboBoxProvideServices.itemText(self.comboBoxProvideServices.currentIndex()),
                          self.lineEditCity.text().title(),
                          self.lineEditAddress.text().title(),
@@ -157,16 +205,16 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
                          self.comboBoxStatus.itemText(self.comboBoxStatus.currentIndex()),
                          self.comboBoxWork.itemText(self.comboBoxWork.currentIndex()),
                          self.dateEditDataWork.text(),
-                         os.path.abspath(self.getFolder()),
+                         path,
                          self.dateTimeEdit.date().toString("dd.MM.yyyy"),
                          self.dateTimeEdit.time().toString("HH:mm"),
-                         self.dateEditDataWork.text())]
+                         self.dateEditNew.text())]
                 self.allClear()
                 self.conn.executemany("INSERT INTO statement VALUES (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", mass)
 
-                os.makedirs(self.getFolder())  # создание директории по заданному пути
+                os.makedirs(path)  # создание директории по заданному пути
 
-                os.startfile(self.getFolder())  # открытие созданной директории
+                os.startfile(path)  # открытие созданной директории
 
                 if self.conn.commit():
                     msg = QMessageBox()
@@ -183,7 +231,7 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
             QMessageBox.critical(self, "Ошибка ", str(text), QMessageBox.Ok)
             self.conn.rollback()
         except sqlite3.IntegrityError as text:
-            print(text)
+            pass
 
     def openFolder(self):  # открыть директорию, указанную в БД
         try:
@@ -191,35 +239,12 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
         except FileNotFoundError as text:
             QMessageBox.critical(self, "Ошибка ", str(text), QMessageBox.Ok)
 
-    def createConfig(self):
-        try:
-            section = configparser.DEFAULTSECT
-            optionDb = 'pathDb'
-            optionFolder = 'pathFolder'
-            config = configparser.ConfigParser()
-            config.read('data/settings.ini')
-            pathDb = config.get(section, optionDb)
-            pathFolder = config.get(section, optionFolder)
-        except:
-            section = configparser.DEFAULTSECT
-            optionDb = 'pathDb'
-            optionFolder = 'pathFolder'
-            config = configparser.ConfigParser()
-            config.read('data/settings.ini')
-            pathDb = QFileDialog.getOpenFileName(self,
-                                                 "Выбрать файл базы данных",
-                                                 ".",
-                                                 "Data Base(*.db);;")
-            pathFolder = QFileDialog.getExistingDirectory(self, "Выбрите директорию")
-            config.set(section, optionDb, pathDb[0])
-            config.set(section, optionFolder, pathFolder)
-            with open('data/settings.ini', 'w') as config_file:
-                config.write(config_file)
-        return pathDb, pathFolder
-
     def fillRecord(self, records):
+        self.tableWidget.setSortingEnabled(False)
+        self.tableWidget.clearContents()
         self.tableWidget.setRowCount(len(records))
         self.tableWidget.hideColumn(9)
+
         for i in range(len(records)):
             item = QTableWidgetItem()
             self.colorItem(item, records[i][10])
@@ -254,44 +279,43 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
             item.setText(str(records[i][0]))  # id
             self.tableWidget.setItem(i, 9, item)
 
+        self.tableWidget.setSortingEnabled(True)
+
     def calendarWork(self):
         dateSelect = self.calendarWidget.selectedDate().toString("dd.MM.yyyy")
-        self.cursor.execute("select dateReception from statement")
-        dateReception = self.cursor.fetchall()
+        self.cursor.execute("select dateNew from statement")
+        dateNew = self.cursor.fetchall()
         dateBuild = QDate()
-        dateNow = QDate().currentDate()
-        print(dateNow)
         color = QColor()
         brush = QBrush()
         form = QTextCharFormat()
-        counter = 0
         fillmass = []
-        self.cursor.execute("select dateNew from statement")
-        dateNew = self.cursor.fetchall()
-        for dateRecord in dateNew:
-            pass
-        for date in dateReception:
-            print(str(date[0])[3:10])
-            print(dateSelect[3:10])
-            if str(date[0])[3:10] == dateSelect[3:10]:
-
-                self.cursor.execute("select * from statement where dateReception = ?", date)
+        for date in dateNew:
+                self.cursor.execute("select * from statement where dateNew = ?", date)
                 result = self.cursor.fetchall()
-                counter = counter + 1
-                if result[0][11] != "Готова":
-                    color.setRgb(255, 112, 41)
-                year = str(date[0])[6:10]
-                mnt = str(date[0])[3:5]
-                day = str(date[0])[0:2]
-                dateBuild.setDate(int(year), int(mnt), int(day))
+                if result[0][11] == "В обработке":
+                    color.setRgb(236, 240, 0)
+                elif result[0][11] == "Ожидает выезд":
+                    color.setRgb(219, 94, 26)
+                elif result[0][11] == "Готова" and (result[0][10] == "Разработка"):
+                    color.setRgb(236, 240, 0)
+                elif result[0][11] == "Готова" and result[0][10] == "Готова":
+                    color.setRgb(134, 250, 45)
+                else:
+                    color.setRgb(74, 81, 87)
+                year = int(str(date[0])[6:10])
+                mnt = int(str(date[0])[3:5])
+                day = int(str(date[0])[0:2])
+                dateBuild.setDate(year, mnt, day)
                 brush.setColor(color)
                 form.setBackground(brush)
                 self.calendarWidget.setDateTextFormat(dateBuild, form)
 
         self.cursor.execute("select * from statement")
         allInfo = self.cursor.fetchall()
-        for i in range(len(dateReception)):
-            if str(allInfo[i][14])[0:10] == dateSelect[0:10]:
+
+        for i in range(len(dateNew)):
+            if str(allInfo[i][16]) == dateSelect:
                 fillmass.append(allInfo[i])
         self.fillRecord(fillmass)
 
@@ -315,6 +339,8 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
 
         self.cursor.execute("SELECT * from statement")
         records = self.cursor.fetchall()
+        self.massForCalendar = records
+        records.sort()
         return records
 
     def openFullInfo(self):
@@ -325,9 +351,9 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
         self.lineEditCity.hide()
         self.lineEditAddress.hide()
         self.pushButton.hide()
-        self.labelDateNew.hide()
+        self.labelDateNew.show()
         self.label.show()
-        self.dateEditNew.hide()
+        self.dateEditNew.show()
         self.pushButtonChangePath.show()
         self.pushButtonOpenFolder.show()
         self.lineEditPath.show()
@@ -343,6 +369,9 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
         dayW = int(mass[0][12][0:2])
         mouthW = int(mass[0][12][3:5])
         yearW = int(mass[0][12][6:10])
+        dayN = int(mass[0][16][0:2])
+        mouthN = int(mass[0][16][3:5])
+        yearN = int(mass[0][16][6:10])
         dayR = int(mass[0][14][0:2])
         mouthR = int(mass[0][14][3:5])
         yearR = int(mass[0][14][6:10])
@@ -350,7 +379,7 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
         timeMinutes = int(mass[0][15][len(mass[0][15]) - 2:len(mass[0][15])])
         dateFillWork = QDate(yearW, mouthW, dayW)
         dateFillReception = QDateTime(yearR, mouthR, dayR, timeHour, timeMinutes)
-
+        dateFillNew = QDate(yearN,mouthN,dayN)
         self.massUpdate = mass
         self.lineEditSurname.setText(mass[0][4])
         self.lineEditName.setText(mass[0][5])
@@ -363,6 +392,7 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
         self.dateEditDataWork.setDate(dateFillWork)
         self.lineEditPath.setText(mass[0][13])
         self.dateTimeEdit.setDateTime(dateFillReception)
+        self.dateEditNew.setDate(dateFillNew)
 
     def updateInfo(self):
         try:
@@ -379,12 +409,14 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
             work = self.comboBoxWork.itemText(self.comboBoxWork.currentIndex())
             dateWork = self.dateEditDataWork.text()
             dateReception = self.dateTimeEdit.text()
+            dateNew = self.dateEditNew.text()
             pathToDir = self.lineEditPath.text()
+
             if buttonReply == QMessageBox.Yes:
                 self.cursor.execute("UPDATE statement SET name=?,surName=?,middleName=?,telefone=?,"
-                                    "price=?,info=?,status=?,work=?,dateWork=?,dateReception=?, pathToDir=? WHERE id=?",
+                                    "price=?,info=?,status=?,work=?,dateWork=?,dateReception=?, pathToDir=?, dateNew=? WHERE id=?",
                                     (name, surName, middleName, telefone, price, info, status,
-                                     work, dateWork, dateReception, pathToDir, id,))
+                                     work, dateWork, dateReception, pathToDir, dateNew, id,))
                 self.conn.commit()
                 self.allClear()
                 self.updateGui()
@@ -415,22 +447,45 @@ class startWindow(QtWidgets.QMainWindow, ui.newForm.Ui_MainWindow):
         self.lineEditPath.hide()
         self.pushButtonEdit.hide()
 
+    def getInfoDebts(self):
+        self.cursor.execute("select id,dateReception,work from statement")
+        dateReceprionMass = self.cursor.fetchall()
+
+        year = int(self.currentDate[6:10])
+        mounth = int(self.currentDate[3:5])
+        day = int(self.currentDate[0:2])
+        datePass = QDate(year, mounth, day)
+
+        dateMass = []
+        countMass = []
+
+        for item in dateReceprionMass:
+
+            dateReception = QDate(int(item[1][6:10]), int(item[1][3:5]), int(item[1][0:2]))
+            dateReception.toString("dd.MM.yyyy")
+
+            countDays = dateReception.daysTo(datePass)
+            if countDays > 20 and item[2]=="Ожидает выезд":
+                    dateMass.append(item[0])
+                    countMass.append(countDays)
+
+        self.cursor.execute("select * from statement where id in ({0})".format(', '.join('?' for _ in dateMass)), dateMass)
+        result = self.cursor.fetchall()
+
+        self.fillRecord(result)
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
     window = startWindow()
     myappid = 'mycompany.myproduct.subproduct.version'  # arbitrary string
     ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
-    app_icon = QtGui.QIcon()
-    app_icon.addFile('img/main.ico', QtCore.QSize(16, 16))
-    app_icon.addFile('img/main.ico', QtCore.QSize(24, 24))
-    app_icon.addFile('img/main.ico', QtCore.QSize(32, 32))
-    app_icon.addFile('img/main.ico', QtCore.QSize(48, 48))
-    app_icon.addFile('img/main.ico', QtCore.QSize(256, 256))
+    app_icon = QIcon()
+
+    app_icon.addFile('img/main.png', QtCore.QSize(32, 32))
+
     app.setWindowIcon(app_icon)
     window.show()
     app.exec_()
-
 
 if __name__ == "__main__":
     main()
